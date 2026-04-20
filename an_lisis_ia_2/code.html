@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-container-highest": "#e3e2e1",
+                        "surface-variant": "#e3e2e1",
+                        "on-tertiary-fixed-variant": "#6b3743",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary-container": "#c2828f",
+                        "on-secondary-container": "#745c00",
+                        "outline-variant": "#e0bfc0",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#faf9f8",
+                        "tertiary-fixed-dim": "#fbb3c1",
+                        "tertiary-fixed": "#ffd9df",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-primary-fixed": "#380c00",
+                        "outline": "#8c7071",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ea6f42",
+                        "on-primary-container": "#551700",
+                        "on-tertiary-fixed": "#360c19",
+                        "surface-container-high": "#e9e8e7",
+                        "on-background": "#1a1c1c",
+                        "surface-bright": "#faf9f8",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "primary": "#a43c12",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-dim": "#dadad9",
+                        "secondary-fixed": "#ffe088",
+                        "tertiary": "#864e5a",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container": "#eeeeed",
+                        "surface-container-low": "#f4f3f2",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#584142",
+                        "inverse-surface": "#2f3130",
+                        "secondary": "#735c00",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fed65b",
+                        "on-secondary": "#ffffff",
+                        "surface": "#faf9f8",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#a43c12",
+                        "on-tertiary-container": "#4b1d29"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanning-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ea6f42, transparent);
+            box-shadow: 0 0 15px #ea6f42;
+            animation: scan 3s ease-in-out infinite;
+        }
+        @keyframes scan {
+            0%, 100% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .gradient-mesh {
+            background-color: #faf9f8;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(234, 111, 66, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(194, 130, 143, 0.08) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-tertiary-container selection:text-on-tertiary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f8]/80 dark:bg-[#1a1c1c]/80 backdrop-blur-md shadow-[0px_12px_32px_rgba(88,65,66,0.06)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#eeeeed] dark:hover:bg-[#333333] transition-colors scale-95 duration-200 ease-in-out">
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] tracking-tighter font-bold text-lg text-[#1a1c1c] dark:text-[#faf9f8]">IDÉNTICA</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden"><img alt="Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujeRvmBXyDtBf1q0-C2fETctXY3lX33ftGHG_YO-vj8Zpd0yX--I3F5sctguYe41DzW9To4dO-eVM0uLkvpGeu9GDW1BfzM0SxZsvkIOOTJZAdxSQWxhm8zISUb3ZQ1zr25yNkgoocVLFUTBtQjRZc_m2R4G7fAohuhgDAkSkSmSSxFH_GYkypw86R4NJ4c63wJmojoDuJGmoKMxD_-H3HcHmB5Z2ep-8J6AnGAEQW8Hk8JkPtqOl1qSFX0ikizQYt0vyoJIbmVIA"/></div>
+</div>
+</header>
+<main class="min-h-screen pt-16 pb-32 flex flex-col items-center gradient-mesh">
+<!-- Analysis Status & Intro -->
+<section class="w-full max-w-md px-6 mt-12 text-center">
+<span class="font-label text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">AI Core Engine</span>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-4">Sincronización Estética</h2>
+<p class="text-on-surface-variant text-sm px-4">Nuestra IA está procesando tu arquitectura facial y matices cromáticos para definir tu ADN de estilo.</p>
+</section>
+<!-- Main Analysis Canvas -->
+<section class="relative w-full max-w-lg px-6 mt-10 flex flex-center justify-center">
+<div class="relative w-full aspect-[3/4] bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-[0px_32px_64px_rgba(88,65,66,0.12)] border border-white/40">
+<!-- The Uploaded Image -->
+<img class="w-full h-full object-cover grayscale-[20%] brightness-[1.05]" data-alt="Fashion portrait of a young woman looking directly into camera with neutral expression, soft high-fashion lighting, minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKE2uRAtBkKr_6-fDU6M2M-3guZItWFN9_MmKVbXR2AjQdgcrfI1qGCrIBVbzVOrAQV_Nbenbm-Ac2Z4Os4oHe2JzuqAzH2r_RPCEd2EoWZTinuSq0kGvfiRm_6hwq3iVbZwuePKb-LwV8wZCGXmJy92Sfg9OlyRIhplNUi6yaHHt8VBr6vtAjRD3ZhIicJtT8XeYdJD441tq7uGOiCgOL5Q67naYKydoMtF7vMXNoBQdEeSEow4XHzWceNLGGKwzD_nfWuNAU5-0"/>
+<!-- Scanning Overlays -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- The Moving Line -->
+<div class="absolute w-full scanning-line"></div>
+<!-- Dynamic Grid Points (High-Tech Feel) -->
+<div class="absolute inset-0 grid grid-cols-6 grid-rows-8 opacity-20">
+<div class="border-l border-t border-primary/30 m-4"></div>
+<div class="border-l border-t border-primary/30 m-4"></div>
+<div class="border-l border-t border-primary/30 m-4"></div>
+<div class="border-l border-t border-primary/30 m-4"></div>
+<div class="border-l border-t border-primary/30 m-4"></div>
+<div class="border-l border-t border-primary/30 m-4"></div>
+<div class="col-span-6 row-span-4 flex items-center justify-center">
+<div class="w-48 h-48 rounded-full border border-primary/40 flex items-center justify-center">
+<div class="w-40 h-40 rounded-full border-2 border-dashed border-tertiary/30 animate-spin-slow"></div>
+</div>
+</div>
+</div>
+<!-- AI Points Labels -->
+<div class="absolute top-1/4 left-1/4 flex items-center gap-2">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_#ea6f42]"></div>
+<span class="bg-surface-container-lowest/80 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wider text-on-surface-variant border border-white/50">CANTHAL_ANGLE: 12°</span>
+</div>
+<div class="absolute bottom-1/3 right-1/4 flex items-center gap-2">
+<div class="w-2 h-2 bg-tertiary rounded-full animate-pulse shadow-[0_0_8px_#c2828f]"></div>
+<span class="bg-surface-container-lowest/80 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wider text-on-surface-variant border border-white/50">PIGMENT_INDEX: 4.2</span>
+</div>
+</div>
+<!-- Bottom Glass Card Status -->
+<div class="absolute bottom-6 left-6 right-6 bg-surface/80 backdrop-blur-xl rounded-2xl p-4 border border-white/30 shadow-lg">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[11px] font-bold tracking-widest uppercase text-on-surface">Detectando proporciones...</span>
+</div>
+<span class="text-[11px] font-bold text-primary">68%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container w-[68%] rounded-full shadow-[0_0_8px_rgba(164,60,18,0.4)]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Insights Grid (Asymmetric) -->
+<section class="w-full max-w-md px-6 mt-8 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low rounded-3xl p-5 flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">palette</span>
+<div>
+<h4 class="text-xs font-bold text-on-surface-variant mb-1">Colorimetría</h4>
+<p class="text-[10px] text-outline leading-tight">Analizando subtonos de piel en tiempo real...</p>
+</div>
+</div>
+<div class="bg-tertiary-container text-on-tertiary-container rounded-3xl p-5 flex flex-col justify-between h-48 -mt-8">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">apparel</span>
+<div>
+<h4 class="text-xs font-bold mb-1">Morfología</h4>
+<p class="text-[10px] opacity-80 leading-tight">Calculando simetría y proporciones áureas...</p>
+</div>
+</div>
+<div class="col-span-2 bg-surface-container-lowest rounded-[2rem] p-6 flex items-center gap-4 shadow-sm">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">science</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Algoritmo Identica v4.2</h4>
+<p class="text-xs text-on-surface-variant">Precisión biométrica optimizada para styling editorial.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#faf9f8]/90 dark:bg-[#1a1c1c]/90 backdrop-blur-2xl rounded-t-[2rem] shadow-[0px_-8px_24px_rgba(88,65,66,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity tap-highlight-transparent active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">auto_awesome</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Studio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c2828f] text-white rounded-full px-6 py-2 tap-highlight-transparent active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Analyze</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity tap-highlight-transparent active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">apparel</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Wardrobe</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity tap-highlight-transparent active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Profile</span>
+</a>
+</nav>
+</body></html>

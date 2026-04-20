@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IDÉNTICA - Personalized Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-container-highest": "#e3e2e1",
+                        "surface-variant": "#e3e2e1",
+                        "on-tertiary-fixed-variant": "#6b3743",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary-container": "#c2828f",
+                        "on-secondary-container": "#745c00",
+                        "outline-variant": "#e0bfc0",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#faf9f8",
+                        "tertiary-fixed-dim": "#fbb3c1",
+                        "tertiary-fixed": "#ffd9df",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-primary-fixed": "#380c00",
+                        "outline": "#8c7071",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ea6f42",
+                        "on-primary-container": "#551700",
+                        "on-tertiary-fixed": "#360c19",
+                        "surface-container-high": "#e9e8e7",
+                        "on-background": "#1a1c1c",
+                        "surface-bright": "#faf9f8",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "primary": "#a43c12",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-dim": "#dadad9",
+                        "secondary-fixed": "#ffe088",
+                        "tertiary": "#864e5a",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container": "#eeeeed",
+                        "surface-container-low": "#f4f3f2",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#584142",
+                        "inverse-surface": "#2f3130",
+                        "secondary": "#735c00",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fed65b",
+                        "on-secondary": "#ffffff",
+                        "surface": "#faf9f8",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#a43c12",
+                        "on-tertiary-container": "#4b1d29"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #faf9f8;
+        }
+        h1, h2, h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface selection:bg-tertiary-container selection:text-on-tertiary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f8]/80 dark:bg-[#1a1c1c]/80 backdrop-blur-md shadow-[0px_12px_32px_rgba(88,65,66,0.06)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#584142] dark:text-[#dadad9] hover:bg-[#eeeeed] dark:hover:bg-[#333333] transition-colors p-2 rounded-full active:scale-95 duration-200 ease-in-out">
+                menu
+            </button>
+<h1 class="text-[#1a1c1c] dark:text-[#faf9f8] font-bold tracking-tighter text-lg font-['Plus_Jakarta_Sans']">IDÉNTICA</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User profile" data-alt="Portrait of a young woman with a warm smile, natural lighting, looking directly at the camera, professional and friendly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAk1kgXPpSuhjhvhZLmnw6DyqfM5gPaR7xZa141l4XRRkiDDV3mrpv4t670Omm_c9VU09ltPwJVuIeIEHSR3CKXTTbEYbnvq0cq_zp1q0FDi4sjbgMx5t6_qtBqLVO64ugMy0WWrr4Ok_qxhhX1RW8sG8E4w0TYvCucnoasnCF1mCtlzROjXQZmUgVw4D-TDkVX8riS5tKRoDTz757PUYY9cQIECOtDeIZjrQCUuWD0D1M8V9SRC_g9TPoAG0BIDnWoirUyFpKaTg"/>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Identity Summary -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-label text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">Personal Analysis</span>
+<h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-on-surface max-w-2xl leading-none">Your Style, <br/><span class="text-primary italic">Decoded.</span></h2>
+</div>
+<div class="hidden md:block text-right pb-1">
+<p class="text-on-surface-variant font-medium text-sm">Analysis Date: Oct 24, 2023</p>
+</div>
+</div>
+</section>
+<!-- Main Content Bento Grid -->
+<div class="bento-grid">
+<!-- Section 1: Body Type (Large Span) -->
+<div class="col-span-12 md:col-span-7 lg:col-span-8 bg-surface-container-lowest rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center overflow-hidden relative group">
+<div class="absolute -right-12 -top-12 w-64 h-64 bg-primary-fixed opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
+<div class="relative z-10 w-full md:w-1/2">
+<span class="text-tertiary font-bold text-xs tracking-widest uppercase mb-4 block">Morphology</span>
+<h3 class="text-3xl font-bold mb-4">Hourglass Silhouette</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Your shoulders and hips are balanced, with a clearly defined waistline. This balanced proportion allows for versatile styling that celebrates your natural curves.</p>
+<div class="flex gap-2">
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant">Hourglass</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant">Balanced</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant">Curvy</span>
+</div>
+</div>
+<div class="w-full md:w-1/2 flex justify-center relative">
+<div class="relative bg-surface-container-low rounded-2xl p-4 w-full aspect-[3/4] flex items-center justify-center">
+<span class="material-symbols-outlined text-[120px] text-primary" style="font-variation-settings: 'FILL' 1;">accessibility_new</span>
+<!-- Decorative Silhouettes -->
+<div class="absolute inset-0 flex justify-between px-8 items-center opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-4xl">woman</span>
+<span class="material-symbols-outlined text-4xl">styler</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Input Data Summary (Side Card) -->
+<div class="col-span-12 md:col-span-5 lg:col-span-4 bg-tertiary-container text-on-tertiary-container rounded-3xl p-8 flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-bold mb-6">Input Profile</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-on-tertiary-container/10 pb-3">
+<span class="text-sm opacity-80">Height</span>
+<span class="font-bold">168 cm</span>
+</div>
+<div class="flex justify-between items-center border-b border-on-tertiary-container/10 pb-3">
+<span class="text-sm opacity-80">Weight</span>
+<span class="font-bold">62 kg</span>
+</div>
+<div class="flex justify-between items-center border-b border-on-tertiary-container/10 pb-3">
+<span class="text-sm opacity-80">Standard Size</span>
+<span class="font-bold">Medium / 38</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm opacity-80">Preferred Fit</span>
+<span class="font-bold">Tailored</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-on-tertiary-container/10">
+<p class="text-xs italic leading-relaxed opacity-90">Data used to calibrate precision fit recommendations for the Studio module.</p>
+</div>
+</div>
+<!-- Section 3: Colorimetry (Medium Cards) -->
+<div class="col-span-12 md:col-span-6 bg-surface-container-low rounded-3xl p-8">
+<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">palette</span>
+                    Colorimetry Profile
+                </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center">
+<span class="text-[10px] uppercase tracking-tighter text-on-surface-variant mb-2">Skin Tone</span>
+<div class="w-10 h-10 rounded-full bg-[#E8BE96] mb-2 shadow-sm"></div>
+<span class="font-bold text-sm">Medium</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center">
+<span class="text-[10px] uppercase tracking-tighter text-on-surface-variant mb-2">Subtone</span>
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#FFD700] to-[#FFA500] mb-2 shadow-sm"></div>
+<span class="font-bold text-sm">Warm</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center">
+<span class="text-[10px] uppercase tracking-tighter text-on-surface-variant mb-2">Eye Color</span>
+<div class="w-10 h-10 rounded-full bg-[#8E7618] mb-2 shadow-sm"></div>
+<span class="font-bold text-sm">Hazel</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center">
+<span class="text-[10px] uppercase tracking-tighter text-on-surface-variant mb-2">Hair Color</span>
+<div class="w-10 h-10 rounded-full bg-[#3D2314] mb-2 shadow-sm"></div>
+<span class="font-bold text-sm">Dark Brown</span>
+</div>
+</div>
+</div>
+<!-- Section 4: Color Season 'Otoño' -->
+<div class="col-span-12 md:col-span-6 bg-surface-container-lowest rounded-3xl p-8 relative overflow-hidden">
+<div class="flex flex-col h-full justify-between relative z-10">
+<div>
+<span class="text-secondary font-bold text-xs tracking-widest uppercase mb-2 block">Chromatography</span>
+<h3 class="text-4xl font-extrabold mb-4">Otoño</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Your features harmonize perfectly with earthy, rich, and warm tones. Think of sunset landscapes and spice markets.</p>
+</div>
+<div class="flex gap-2 w-full overflow-x-auto hide-scrollbar pb-2">
+<div class="min-w-[48px] h-12 rounded-xl bg-[#a43c12] shadow-sm"></div>
+<div class="min-w-[48px] h-12 rounded-xl bg-[#864e5a] shadow-sm"></div>
+<div class="min-w-[48px] h-12 rounded-xl bg-[#735c00] shadow-sm"></div>
+<div class="min-w-[48px] h-12 rounded-xl bg-[#c2828f] shadow-sm"></div>
+<div class="min-w-[48px] h-12 rounded-xl bg-[#e9c349] shadow-sm"></div>
+<div class="min-w-[48px] h-12 rounded-xl bg-[#574500] shadow-sm"></div>
+<div class="min-w-[48px] h-12 rounded-xl bg-[#360c19] shadow-sm"></div>
+</div>
+</div>
+<!-- Artistic Abstract Background Overlay -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-secondary-container/20 to-transparent pointer-events-none"></div>
+</div>
+<!-- Section 5: Facial Harmony (Full Width Subtle Card) -->
+<div class="col-span-12 bg-surface-container-low rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 border border-outline-variant/10">
+<div class="w-full md:w-1/3">
+<img alt="Facial analysis visual" class="rounded-2xl shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-500" data-alt="Close-up artistic photo of a face highlighting symmetry and facial features with soft lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxsaP74Qkp68NUAz2mDNparHIE_eJLu2jw1NQMrKNJdxf_QsnrZO0bGFglWig6k6T1WsxMzRwAwVT8595wsAhS_GbPnpSNeJtd0GepJ3z01A5s6DjUsdQ6swMoc2cU0FJuui8bOCT6o1rSkfOXAcCaICQs_gdg--pWEH3r33jf8W98Rvq877viis71Ry0VoP65-PYz0QWUUbt5NHvr7dphXSm7h_MZ7C8-v3yWQCganQWvnhh6tsAxMINwYOIvabTF8xXAjXWYaVg"/>
+</div>
+<div class="w-full md:w-2/3">
+<h3 class="text-2xl font-bold mb-4">Facial Harmony &amp; Traits</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-4">Your facial structure displays high visual weight with balanced proportions. The hazel eyes provide a captivating contrast against the warm medium skin tone, suggesting that metallic gold and copper accessories will enhance your natural radiance.</p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-sm">High Contrast</span>
+</div>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-sm">Warm Radiance</span>
+</div>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-sm">Strong Bone Structure</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 6: Recommendations (High-Impact Cards) -->
+<div class="col-span-12">
+<h3 class="text-2xl font-bold mb-8 mt-4 text-center tracking-tight">Personalized Recommendations</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Garment Types -->
+<div class="bg-surface-container-lowest rounded-3xl p-6 shadow-[0px_12px_32px_rgba(88,65,66,0.06)] group hover:-translate-y-1 transition-all duration-300">
+<div class="w-12 h-12 rounded-2xl bg-primary-fixed-dim flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined">apparel</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Garment Types</h4>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Wrap dresses for waist emphasis</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> High-waisted structured trousers</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Tailored blazers with waist cinch</li>
+</ul>
+</div>
+<!-- Cuts & Silhouettes -->
+<div class="bg-surface-container-lowest rounded-3xl p-6 shadow-[0px_12px_32px_rgba(88,65,66,0.06)] group hover:-translate-y-1 transition-all duration-300">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center mb-6 text-secondary">
+<span class="material-symbols-outlined">content_cut</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Cuts &amp; Silhouettes</h4>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> V-necklines to elongate torso</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> A-line skirts for fluid movement</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Peplum tops for curve definition</li>
+</ul>
+</div>
+<!-- Signature Colors -->
+<div class="bg-surface-container-lowest rounded-3xl p-6 shadow-[0px_12px_32px_rgba(88,65,66,0.06)] group hover:-translate-y-1 transition-all duration-300">
+<div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center mb-6 text-tertiary">
+<span class="material-symbols-outlined">format_color_fill</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Signature Colors</h4>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Terracotta and Burnt Orange</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Deep Olive and Forest Green</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Rich Cream and Warm Gold</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action -->
+<section class="mt-20 text-center">
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 inline-flex items-center gap-3">
+                Shop My Style Profile
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="mt-6 text-on-surface-variant text-sm max-w-md mx-auto">Explore curated pieces that match your specific morphology and color palette in the Wardrobe section.</p>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#faf9f8]/90 dark:bg-[#1a1c1c]/90 backdrop-blur-2xl shadow-[0px_-8px_24px_rgba(88,65,66,0.04)] rounded-t-[2rem]">
+<a class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">auto_awesome</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Studio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c2828f] text-white rounded-full px-6 py-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">photo_camera</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Analyze</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">apparel</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Wardrobe</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es" class="">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>IDÉNTICA - AI Fashion Atelier</title>
+    <!-- Tailwind CSS with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-container-highest": "#e3e2e1",
+                        "surface-variant": "#e3e2e1",
+                        "on-tertiary-fixed-variant": "#6b3743",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary-container": "#c2828f",
+                        "on-secondary-container": "#745c00",
+                        "outline-variant": "#e0bfc0",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#faf9f8",
+                        "tertiary-fixed-dim": "#fbb3c1",
+                        "tertiary-fixed": "#ffd9df",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-primary-fixed": "#380c00",
+                        "outline": "#8c7071",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ea6f42",
+                        "on-primary-container": "#551700",
+                        "on-tertiary-fixed": "#360c19",
+                        "surface-container-high": "#e9e8e7",
+                        "on-background": "#1a1c1c",
+                        "surface-bright": "#faf9f8",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "primary": "#F85F73", // Updated to theme requirement primary color
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-dim": "#dadad9",
+                        "secondary-fixed": "#ffe088",
+                        "tertiary": "#864e5a",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container": "#eeeeed",
+                        "surface-container-low": "#f4f3f2",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#584142",
+                        "inverse-surface": "#2f3130",
+                        "secondary": "#735c00",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fed65b",
+                        "on-secondary": "#ffffff",
+                        "surface": "#faf9f8",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#a43c12",
+                        "on-tertiary-container": "#4b1d29"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header {
+            background: rgba(250, 249, 248, 0.8);
+            backdrop-filter: blur(16px);
+        }
+        .premium-shadow {
+            box-shadow: 0px 12px 32px rgba(88, 65, 66, 0.06);
+        }
+        .editorial-shadow {
+            box-shadow: 0px 12px 32px rgba(88, 65, 66, 0.06);
+        }
+        .asymmetric-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(248, 95, 115, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(194, 130, 143, 0.08) 0%, transparent 50%);
+        }
+        .scanning-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #F85F73, transparent);
+            box-shadow: 0 0 15px #F85F73;
+            animation: scan 3s ease-in-out infinite;
+        }
+        @keyframes scan {
+            0%, 100% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .bg-atelier-gradient {
+            background: linear-gradient(135deg, #F85F73 0%, #ea6f42 100%);
+        }
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        body {
+            min-height: 100dvh;
+            font-family: 'Manrope', sans-serif;
+        }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased">
+    <div id="root"></div>
+
+    <!-- React and Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // --- Shared Components ---
+
+        const Header = ({ title = "IDÉNTICA", showBack = true }) => {
+            const navigate = useNavigate();
+            return (
+                <header class="fixed top-0 w-full z-50 glass-header flex justify-between items-center px-6 h-16 premium-shadow">
+                    <div class="flex items-center gap-4">
+                        {showBack && (
+                            <button onClick={() => navigate(-1)} class="p-2 hover:bg-surface-container rounded-full transition-colors duration-200">
+                                <span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+                            </button>
+                        )}
+                        {!showBack && (
+                             <button class="p-2 hover:bg-surface-container rounded-full transition-colors duration-200">
+                                <span class="material-symbols-outlined text-on-surface-variant">menu</span>
+                            </button>
+                        )}
+                    </div>
+                    <div class="font-headline tracking-tighter font-bold text-lg text-on-surface">{title}</div>
+                    <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+                        <img alt="Perfil" class="w-full h-full object-cover" src="https://i.pinimg.com/736x/19/1e/d7/191ed75e955b4990ccdd7b914757766c.jpg" />
+                    </div>
+                </header>
+            );
+        };
+
+        const BottomNav = ({ activeTab = "analizar" }) => {
+            return (
+                <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/90 backdrop-blur-2xl rounded-t-[2rem] shadow-[0px_-8px_24px_rgba(88,65,66,0.04)]">
+                    <Link to="/results" class={`flex flex-col items-center justify-center ${activeTab === 'estudio' ? 'text-primary' : 'text-on-surface-variant opacity-70'} transition-opacity tap-highlight-transparent`}>
+                        <span class="material-symbols-outlined">auto_awesome</span>
+                        <span class="font-label text-[10px] font-medium tracking-wide uppercase">Estudio</span>
+                    </Link>
+                    <Link to="/upload" class={`flex flex-col items-center justify-center ${activeTab === 'analizar' ? 'bg-tertiary-container text-white rounded-full px-6 py-2' : 'text-on-surface-variant opacity-70'} transition-opacity tap-highlight-transparent`}>
+                        <span class="material-symbols-outlined">photo_camera</span>
+                        <span class="font-label text-[10px] font-medium tracking-wide uppercase">Analizar</span>
+                    </Link>
+                    <Link to="#" class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 transition-opacity">
+                        <span class="material-symbols-outlined">apparel</span>
+                        <span class="font-label text-[10px] font-medium tracking-wide uppercase">Armario</span>
+                    </Link>
+                    <Link to="/measurements" class={`flex flex-col items-center justify-center ${activeTab === 'perfil' ? 'text-primary' : 'text-on-surface-variant opacity-70'} transition-opacity tap-highlight-transparent`}>
+                        <span class="material-symbols-outlined">person</span>
+                        <span class="font-label text-[10px] font-medium tracking-wide uppercase">Perfil</span>
+                    </Link>
+                </nav>
+            );
+        };
+
+        // --- Screen 1: Welcome/Onboarding (ID: c6954112771943cb97b4ef81dfaaf125) ---
+        const WelcomePage = () => {
+            const navigate = useNavigate();
+            return (
+                <main class="relative min-h-screen w-full flex flex-col items-center justify-between asymmetric-gradient px-8 py-12 md:px-24 md:py-20">
+                    <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-primary-fixed opacity-10 rounded-bl-full filter blur-3xl pointer-events-none"></div>
+                    <div class="absolute bottom-10 left-[-10%] w-[60%] h-[40%] bg-tertiary-container opacity-5 rounded-tr-full filter blur-2xl pointer-events-none"></div>
+                    
+                    <div class="relative z-10 w-full text-center">
+                        <h1 class="font-headline font-bold text-5xl md:text-7xl tracking-tighter text-on-surface mb-2">IDÉNTICA</h1>
+                        <p class="font-label uppercase tracking-[0.2em] text-on-surface-variant text-xs md:text-sm font-semibold opacity-80">Descubre tu mejor versión</p>
+                    </div>
+
+                    <div class="relative z-10 w-full max-w-4xl flex items-center justify-center flex-1 my-12 md:my-0">
+                        <div class="relative w-full aspect-[4/5] md:aspect-video flex items-center justify-center">
+                            <div class="absolute inset-0 bg-surface-container-low rounded-[4rem] rotate-[-2deg] scale-105 pointer-events-none"></div>
+                            <div class="relative w-[90%] h-[90%] rounded-[3rem] overflow-hidden shadow-2xl editorial-shadow">
+                                <img class="w-full h-full object-cover" src="https://i.pinimg.com/1200x/1a/e5/72/1ae572ee132fd794b51d19ffb2f6f894.jpg" />
+                                <div class="absolute bottom-8 right-8 bg-surface/80 backdrop-blur-xl p-6 rounded-3xl max-w-[200px] editorial-shadow border border-white/20 hidden md:block">
+                                    <div class="flex items-center gap-2 mb-2 text-tertiary">
+                                        <span class="material-symbols-outlined text-lg" style={{fontVariationSettings: '"FILL" 1'}}>auto_awesome</span>
+                                        <span class="font-label text-[10px] font-bold uppercase tracking-widest">Estilo IA</span>
+                                    </div>
+                                    <p class="font-body text-sm leading-tight text-on-surface-variant">Tu paleta cromática ideal: Corales cálidos y tonos tierra.</p>
+                                </div>
+                            </div>
+                            <div class="absolute -top-6 left-12 w-24 h-24 rounded-full bg-secondary-container flex items-center justify-center editorial-shadow rotate-12">
+                                <span class="material-symbols-outlined text-on-secondary-container text-4xl">style</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 w-full max-w-md text-center flex flex-col items-center gap-8">
+                        <div class="flex flex-col gap-2">
+                            <span class="font-label text-[10px] uppercase tracking-[0.3em] text-primary font-bold">El Taller Digital</span>
+                            <p class="font-body text-on-surface-variant text-sm px-4">La precisión de la inteligencia artificial se encuentra con el arte del estilo personal.</p>
+                        </div>
+                        <button onClick={() => navigate('/measurements')} class="group relative w-full overflow-hidden rounded-full bg-gradient-to-r from-primary to-primary-container p-px editorial-shadow active:scale-95 transition-transform duration-200">
+                            <div class="relative flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-primary-container px-10 py-5 rounded-full">
+                                <span class="font-headline font-bold text-on-primary tracking-wide text-lg">Comenzar</span>
+                                <span class="material-symbols-outlined text-on-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                        </button>
+                    </div>
+                </main>
+            );
+        };
+
+        // --- Screen 2: Personal Measurements (ID: 2effe2dc6d2c49a3b344d82c9f445721) ---
+        const MeasurementsPage = () => {
+            const navigate = useNavigate();
+            return (
+                <div class="bg-surface min-h-screen">
+                    <Header showBack={true} />
+                    <main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+                        <section class="mb-10">
+                            <span class="font-label text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Perfil de Estilo</span>
+                            <h1 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-3">Tus medidas, tu ajuste.</h1>
+                            <p class="text-on-surface-variant leading-relaxed">Personaliza tu experiencia de IA. Usamos estos datos para que cada sugerencia de nuestro "Digital Atelier" sea exacta para tu cuerpo.</p>
+                        </section>
+                        
+                        <form class="space-y-10">
+                            <div class="grid grid-cols-2 gap-4">
+                                {[
+                                    { id: 'height', label: 'Estatura', unit: 'cm', icon: 'straighten', placeholder: '170' },
+                                    { id: 'weight', label: 'Peso', unit: 'kg', icon: 'monitor_weight', placeholder: '65' },
+                                    { id: 'shirt', label: 'Talla Camisa', unit: '', icon: 'apparel', placeholder: 'M' },
+                                    { id: 'pants', label: 'Talla Pantalón', unit: '', icon: 'layers', placeholder: '32' }
+                                ].map(item => (
+                                    <div key={item.id} class="bg-surface-container-lowest p-6 rounded-xl premium-shadow flex flex-col space-y-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-tertiary scale-75">{item.icon}</span>
+                                            </div>
+                                            <label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider" htmlFor={item.id}>{item.label}</label>
+                                        </div>
+                                        <div class="flex items-end gap-2">
+                                            <input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id={item.id} placeholder={item.placeholder} type="text" />
+                                            {item.unit && <span class="pb-3 font-label text-xs font-bold text-outline">{item.unit}</span>}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <section>
+                                <div class="flex items-center justify-between mb-6">
+                                    <h2 class="font-headline text-xl font-bold text-on-surface">Tu ajuste preferido</h2>
+                                    <span class="material-symbols-outlined text-primary scale-75">info</span>
+                                </div>
+                                <div class="flex flex-col gap-4">
+                                    {[
+                                        { id: 'adjusted', label: 'Ajustado', desc: 'Cerca del cuerpo, silueta definida.', icon: 'accessibility_new' },
+                                        { id: 'regular', label: 'Regular', desc: 'Equilibrio perfecto, clásico y cómodo.', icon: 'person', suggested: true },
+                                        { id: 'oversize', label: 'Oversize', desc: 'Relajado, holgado y con estilo urbano.', icon: 'checkroom' }
+                                    ].map(fit => (
+                                        <label key={fit.id} class="group relative block cursor-pointer">
+                                            <input class="sr-only peer" name="fit" type="radio" value={fit.id} defaultChecked={fit.suggested} />
+                                            <div class="bg-surface-container-low peer-checked:bg-tertiary-container peer-checked:text-white flex items-center p-5 rounded-2xl transition-all duration-300 group-hover:bg-surface-container-high">
+                                                <div class="flex-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <p class="font-headline font-bold text-lg">{fit.label}</p>
+                                                        {fit.suggested && <span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-tighter">Sugerido</span>}
+                                                    </div>
+                                                    <p class="text-sm opacity-80 font-medium">{fit.desc}</p>
+                                                </div>
+                                                <div class="w-16 h-16 rounded-xl bg-surface-container-lowest/20 flex items-center justify-center">
+                                                    <span class="material-symbols-outlined text-3xl">{fit.icon}</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    ))}
+                                </div>
+                            </section>
+
+                            <div class="p-6 bg-surface-container-low rounded-2xl border-l-4 border-tertiary flex gap-4">
+                                <span class="material-symbols-outlined text-tertiary">lightbulb</span>
+                                <p class="text-sm text-on-tertiary-fixed-variant leading-relaxed">
+                                    <strong>Tip del Atelier:</strong> Si estás entre dos tallas, un ajuste <strong>Regular</strong> suele ser la opción más versátil.
+                                </p>
+                            </div>
+                        </form>
+                    </main>
+                    <div class="fixed bottom-0 left-0 w-full p-6 glass-header z-40">
+                        <button onClick={() => navigate('/upload')} class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 rounded-full font-headline font-bold text-lg premium-shadow active:scale-95 transition-transform duration-200">
+                            Continuar
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- Screen 3: Photo Upload (ID: 6c6aa158d33449ffada3289071e60786) ---
+        const UploadPage = () => {
+            const navigate = useNavigate();
+            return (
+                <div class="bg-background min-h-screen">
+                    <Header showBack={false} />
+                    <main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+                        <section class="mb-10 text-center md:text-left">
+                            <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-on-surface tracking-tight leading-tight mb-4">
+                                Sube una foto tuya para comenzar el análisis
+                            </h2>
+                            <p class="text-on-surface-variant text-lg leading-relaxed max-w-lg">
+                                Nuestra IA analizará tus rasgos y tonos naturales para crear tu paleta de colores personalizada.
+                            </p>
+                        </section>
+
+                        <section onClick={() => navigate('/analysis')} class="relative mb-8 group cursor-pointer">
+                            <div class="aspect-[4/5] md:aspect-[16/10] w-full rounded-[2.5rem] bg-surface-container-low flex flex-col items-center justify-center p-8 text-center transition-all duration-300 group-hover:bg-surface-container overflow-hidden">
+                                <div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/10 rounded-full blur-3xl"></div>
+                                <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+                                <div class="relative z-10 flex flex-col items-center">
+                                    <div class="w-24 h-24 mb-6 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-500">
+                                        <span class="material-symbols-outlined text-primary text-4xl">upload_file</span>
+                                    </div>
+                                    <button class="bg-atelier-gradient text-on-primary px-10 py-4 rounded-full font-headline font-bold text-lg shadow-xl hover:brightness-110 active:scale-95 transition-all mb-4">
+                                        Subir imagen
+                                    </button>
+                                    <p class="text-on-surface-variant/60 font-medium text-sm">o arrastra y suelta tu archivo aquí</p>
+                                </div>
+                                <div class="absolute bottom-0 right-0 opacity-20 group-hover:opacity-30 transition-opacity">
+                                    <img alt="Silueta" class="h-64 object-contain translate-y-12 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT9D8GYgK8aZ8jOq6y5B3UZ1md8xCh_Ra6vDApbTEiU6RMYKE4Do9dmm9Iet8FZxmMSNHpXwb_ZjL0Lzm87s6urYPcm1rcfvvXgl0mB-JJpcC0sk_8JIoglv73-iDyYWYKC57SW2bpqlYKLP_CqmSckbuaTmno7OvHLfk3zNVtVI3yToX1BiS5GahjBnt60N9dlm4N-1dr7L8UmAWVdP-2ZWY7YIWSmVPrYt6OLjO-7p-ZS1MT42RTInmbdKOgTgoIU1jiMPcqmpo" />
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="grid grid-cols-2 gap-4 mb-12">
+                            <button onClick={() => navigate('/analysis')} class="flex items-center justify-center gap-3 bg-secondary-container text-on-secondary-container py-4 rounded-2xl font-bold hover:brightness-105 transition-all active:scale-95">
+                                <span class="material-symbols-outlined">photo_camera</span> Cámara
+                            </button>
+                            <button onClick={() => navigate('/analysis')} class="flex items-center justify-center gap-3 bg-surface-container-highest text-on-surface py-4 rounded-2xl font-bold hover:bg-surface-variant transition-all active:scale-95">
+                                <span class="material-symbols-outlined">photo_library</span> Galería
+                            </button>
+                        </section>
+
+                        <section class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm border border-outline-variant/10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="material-symbols-outlined text-tertiary">lightbulb</span>
+                                <h3 class="font-headline font-bold text-xl text-on-surface">Tips para una mejor foto</h3>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {[
+                                    { title: 'Iluminación natural', desc: 'Ponte de frente a una ventana.', icon: 'sunny' },
+                                    { title: 'Fondo neutro', desc: 'Usa un fondo liso y claro.', icon: 'wallpaper' },
+                                    { title: 'Sin maquillaje', desc: 'Para ver tu tono natural.', icon: 'face' },
+                                    { title: 'Enfoque claro', desc: 'Rostro bien centrado y nítido.', icon: 'center_focus_strong' }
+                                ].map((tip, i) => (
+                                    <div key={i} class="flex items-start gap-4">
+                                        <div class="w-10 h-10 shrink-0 rounded-full bg-tertiary-fixed flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-on-tertiary-fixed-variant text-xl">{tip.icon}</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-on-surface mb-1">{tip.title}</h4>
+                                            <p class="text-on-surface-variant text-sm leading-relaxed">{tip.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </main>
+                    <BottomNav activeTab="analizar" />
+                </div>
+            );
+        };
+
+        // --- Screen 4: AI Analysis in Progress (ID: 1a60d7764b284f90b95436b956611072) ---
+        const AnalysisPage = () => {
+            const navigate = useNavigate();
+            const [progress, setProgress] = useState(0);
+
+            useEffect(() => {
+                const timer = setInterval(() => {
+                    setProgress(prev => {
+                        if (prev >= 100) {
+                            clearInterval(timer);
+                            setTimeout(() => navigate('/success'), 500);
+                            return 100;
+                        }
+                        return prev + 2;
+                    });
+                }, 100);
+                return () => clearInterval(timer);
+            }, []);
+
+            return (
+                <div class="bg-background min-h-screen">
+                    <Header showBack={false} />
+                    <main class="pt-16 pb-32 flex flex-col items-center asymmetric-gradient">
+                        <section class="w-full max-w-md px-6 mt-12 text-center">
+                            <span class="font-label text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">Motor de IA Core</span>
+                            <h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-4">Sincronización Estética</h2>
+                            <p class="text-on-surface-variant text-sm px-4">Nuestra IA está procesando tu arquitectura facial y matices cromáticos.</p>
+                        </section>
+
+                        <section class="relative w-full max-w-lg px-6 mt-10 flex flex-center justify-center">
+                            <div class="relative w-full aspect-[3/4] bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-2xl border border-white/40">
+                                <img alt="Análisis" class="w-full h-full object-cover grayscale-[20%] brightness-[1.05]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKE2uRAtBkKr_6-fDU6M2M-3guZItWFN9_MmKVbXR2AjQdgcrfI1qGCrIBVbzVOrAQV_Nbenbm-Ac2Z4Os4oHe2JzuqAzH2r_RPCEd2EoWZTinuSq0kGvfiRm_6hwq3iVbZwuePKb-LwV8wZCGXmJy92Sfg9OlyRIhplNUi6yaHHt8VBr6vtAjRD3ZhIicJtT8XeYdJD441tq7uGOiCgOL5Q67naYKydoMtF7vMXNoBQdEeSEow4XHzWceNLGGKwzD_nfWuNAU5-0" />
+                                <div class="absolute inset-0 pointer-events-none">
+                                    <div class="absolute w-full scanning-line"></div>
+                                    <div class="absolute inset-0 grid grid-cols-6 grid-rows-8 opacity-20">
+                                        <div class="col-span-6 row-span-4 flex items-center justify-center">
+                                            <div class="w-48 h-48 rounded-full border border-primary/40 flex items-center justify-center">
+                                                <div class="w-40 h-40 rounded-full border-2 border-dashed border-tertiary/30 animate-spin"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute top-1/4 left-1/4 flex items-center gap-2">
+                                        <div class="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_#F85F73]"></div>
+                                        <span class="bg-surface-container-lowest/80 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wider text-on-surface-variant border border-white/50">ÁNGULO_CANTO: 12°</span>
+                                    </div>
+                                </div>
+
+                                <div class="absolute bottom-6 left-6 right-6 bg-surface/80 backdrop-blur-xl rounded-2xl p-4 border border-white/30 shadow-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-primary text-sm" style={{fontVariationSettings: '"FILL" 1'}}>auto_awesome</span>
+                                            <span class="text-[11px] font-bold tracking-widest uppercase text-on-surface">Detectando proporciones...</span>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-primary">{progress}%</span>
+                                    </div>
+                                    <div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-to-r from-primary to-primary-container rounded-full" style={{width: `${progress}%`}}></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+                    <BottomNav activeTab="analizar" />
+                </div>
+            );
+        };
+
+        // --- Screen 5: Success & Preview (ID: 7f6b9e8fe03c4879b854e141ce7e734d) ---
+        const SuccessPage = () => {
+            const navigate = useNavigate();
+            return (
+                <div class="bg-background min-h-screen">
+                    <header class="fixed top-0 w-full z-50 bg-[#faf9f8]/80 backdrop-blur-md h-16 flex justify-between items-center px-6">
+                        <div class="text-on-surface font-headline font-bold tracking-tighter text-lg">IDÉNTICA</div>
+                        <button onClick={() => navigate('/results')} class="material-symbols-outlined text-on-surface-variant">close</button>
+                    </header>
+                    <main class="pt-24 pb-12 min-h-screen px-6 max-w-4xl mx-auto">
+                        <section class="mb-12">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-on-secondary-container" style={{fontVariationSettings: "'FILL' 1"}}>check_circle</span>
+                                </div>
+                                <span class="font-label text-xs uppercase tracking-[0.2em] text-tertiary font-bold">Análisis Completado</span>
+                            </div>
+                            <h1 class="font-headline text-5xl md:text-6xl font-bold text-on-surface tracking-tight leading-[1.1]">Tu asesoría <br/>está lista</h1>
+                        </section>
+
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+                            <div class="md:col-span-7 relative group">
+                                <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-low">
+                                    <img alt="Curation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGNk_e481KzsJvR2dG-22AMiP8wmDQOAyUEVSj0ZOqOf_tQpRKjHmwfJcu3RQoXZ8rQyns7bdF8JGALxFnNCsmXJp0SScb3iBcYs_XzumA4KrzKfGpPnW54Sopl0einCQyYHnk1plmMyQTE_hGnXh7leQ3VoEjUfr3WUNidxeO7hKpfdsad4MoXPzh5ZTHXUqGT68diX9-Af0bMt78L-G3shJpjxyKMVYQajPwbFrz9FqJ3SLf-OeXuZvScyg2Mu_SPiIwu6prURE" />
+                                </div>
+                                <div class="absolute -bottom-4 -right-4 glass-panel bg-white/70 p-6 rounded-xl shadow-lg max-w-[240px]">
+                                    <p class="font-label text-xs font-bold text-tertiary mb-2 uppercase tracking-widest">Esencia Detectada</p>
+                                    <p class="font-headline text-xl font-bold text-on-surface leading-tight">Minimalismo Cálido & Estructura</p>
+                                </div>
+                            </div>
+                            <div class="md:col-span-5 flex flex-col gap-6">
+                                <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+                                    <h3 class="font-headline font-bold text-on-surface-variant mb-4">Tu paleta estacional</h3>
+                                    <div class="flex gap-2">
+                                        <div class="h-12 flex-1 rounded-lg bg-primary" title="Coral Vibrante"></div>
+                                        <div class="h-12 flex-1 rounded-lg bg-tertiary-container" title="Malva Suave"></div>
+                                        <div class="h-12 flex-1 rounded-lg bg-secondary-container" title="Oro Digital"></div>
+                                        <div class="h-12 flex-1 rounded-lg bg-[#584142]" title="Tierra Profunda"></div>
+                                    </div>
+                                    <p class="mt-4 text-sm text-on-surface-variant">Colores que realzan tu subtono cálido.</p>
+                                </div>
+                                <div class="bg-tertiary-container/10 p-6 rounded-xl">
+                                    <p class="font-body text-on-tertiary-container italic text-sm">"Prioriza tejidos con caída natural como el lino y la seda."</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <section class="max-w-md mx-auto space-y-4">
+                            <button onClick={() => navigate('/results')} class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold py-5 rounded-full shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
+                                Ver recomendaciones completas <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </section>
+                    </main>
+                    <footer class="mt-12 py-8 bg-surface-container-low text-center">
+                        <p class="font-label text-[10px] uppercase tracking-[0.3em] text-on-surface-variant/40">Idéntica AI Styling Atelier • 2024</p>
+                    </footer>
+                </div>
+            );
+        };
+
+        // --- Screen 6: Full Results Dashboard (ID: c8529bd39fd9451080ccac0fe384a06f) ---
+        const ResultsPage = () => {
+            return (
+                <div class="bg-background min-h-screen">
+                    <Header showBack={false} />
+                    <main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+                        <section class="mb-12">
+                            <span class="font-label text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">Análisis Personal</span>
+                            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-on-surface max-w-2xl leading-none">Tu Estilo, <br/><span class="text-primary italic">Descifrado.</span></h2>
+                        </section>
+
+                        <div class="grid grid-cols-12 gap-6">
+                            <div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden group shadow-sm">
+                                <div class="relative z-10 w-full md:w-1/2">
+                                    <span class="text-tertiary font-bold text-xs tracking-widest uppercase mb-4 block">Morfología</span>
+                                    <h3 class="text-3xl font-bold mb-4">Silueta Reloj de Arena</h3>
+                                    <p class="text-on-surface-variant leading-relaxed mb-6">Tus hombros y caderas están equilibrados, con una cintura claramente definida.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        {['Reloj de Arena', 'Equilibrada', 'Curvilínea'].map(tag => (
+                                            <span key={tag} class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant">{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-1/2 flex justify-center bg-surface-container-low rounded-2xl p-8 aspect-square items-center">
+                                    <span class="material-symbols-outlined text-[120px] text-primary" style={{fontVariationSettings: '"FILL" 1'}}>accessibility_new</span>
+                                </div>
+                            </div>
+
+                            <div class="col-span-12 lg:col-span-4 bg-tertiary-container text-on-tertiary-container rounded-3xl p-8 shadow-sm">
+                                <h3 class="text-xl font-bold mb-6">Perfil de Datos</h3>
+                                <div class="space-y-4">
+                                    {[
+                                        { label: 'Altura', value: '168 cm' },
+                                        { label: 'Peso', value: '62 kg' },
+                                        { label: 'Talla Estándar', value: '38' },
+                                        { label: 'Ajuste', value: 'Entallado' }
+                                    ].map((row, i) => (
+                                        <div key={i} class="flex justify-between items-center border-b border-on-tertiary-container/10 pb-3">
+                                            <span class="text-sm opacity-80">{row.label}</span>
+                                            <span class="font-bold">{row.value}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div class="col-span-12 md:col-span-6 bg-surface-container-low rounded-3xl p-8 shadow-sm">
+                                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary">palette</span> Perfil de Colorimetría
+                                </h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    {[
+                                        { l: 'Piel', c: '#E8BE96', v: 'Medio' },
+                                        { l: 'Subtono', c: 'linear-gradient(to tr, #FFD700, #FFA500)', v: 'Cálido' },
+                                        { l: 'Ojos', c: '#8E7618', v: 'Avellana' },
+                                        { l: 'Pelo', c: '#3D2314', v: 'Castaño' }
+                                    ].map((item, i) => (
+                                        <div key={i} class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center">
+                                            <span class="text-[10px] uppercase text-on-surface-variant mb-2">{item.l}</span>
+                                            <div class="w-10 h-10 rounded-full mb-2 shadow-sm" style={{background: item.c}}></div>
+                                            <span class="font-bold text-sm">{item.v}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div class="col-span-12 md:col-span-6 bg-surface-container-lowest rounded-3xl p-8 relative overflow-hidden shadow-sm">
+                                <span class="text-secondary font-bold text-xs tracking-widest uppercase mb-2 block">Cromatografía</span>
+                                <h3 class="text-4xl font-extrabold mb-4">Otoño</h3>
+                                <div class="flex gap-2 w-full overflow-x-auto no-scrollbar pb-2">
+                                    {['#a43c12', '#864e5a', '#735c00', '#c2828f', '#e9c349'].map(color => (
+                                        <div key={color} class="min-w-[48px] h-12 rounded-xl shadow-sm" style={{backgroundColor: color}}></div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div class="col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                                {[
+                                    { title: 'Prendas', icon: 'apparel', bg: 'bg-primary-fixed-dim', items: ['Vestidos wrap', 'Tiro alto', 'Blazers entallados'] },
+                                    { title: 'Cortes', icon: 'content_cut', bg: 'bg-secondary-container', items: ['Escotes en V', 'Línea A', 'Tops peplum'] },
+                                    { title: 'Colores', icon: 'format_color_fill', bg: 'bg-tertiary-fixed', items: ['Terracota', 'Oliva profundo', 'Crema rico'] }
+                                ].map((box, i) => (
+                                    <div key={i} class="bg-surface-container-lowest rounded-3xl p-6 shadow-sm">
+                                        <div class={`w-12 h-12 rounded-2xl ${box.bg} flex items-center justify-center mb-6`}>
+                                            <span class="material-symbols-outlined">{box.icon}</span>
+                                        </div>
+                                        <h4 class="text-xl font-bold mb-3">{box.title}</h4>
+                                        <ul class="space-y-2 text-on-surface-variant text-sm">
+                                            {box.items.map(it => <li key={it}>• {it}</li>)}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </main>
+                    <BottomNav activeTab="estudio" />
+                </div>
+            );
+        };
+
+        // --- App Component with Router ---
+        const App = () => {
+            return (
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<WelcomePage />} />
+                        <Route path="/measurements" element={<MeasurementsPage />} />
+                        <Route path="/upload" element={<UploadPage />} />
+                        <Route path="/analysis" element={<AnalysisPage />} />
+                        <Route path="/success" element={<SuccessPage />} />
+                        <Route path="/results" element={<ResultsPage />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

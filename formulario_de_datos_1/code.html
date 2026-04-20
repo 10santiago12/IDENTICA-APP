@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>IDÉNTICA - Datos Personales</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f1f0f0",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface-variant": "#e3e2e1",
+                    "on-tertiary-fixed-variant": "#6b3743",
+                    "primary-fixed-dim": "#ffb59c",
+                    "tertiary-container": "#c2828f",
+                    "on-secondary-container": "#745c00",
+                    "outline-variant": "#e0bfc0",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#faf9f8",
+                    "tertiary-fixed-dim": "#fbb3c1",
+                    "tertiary-fixed": "#ffd9df",
+                    "on-primary-fixed-variant": "#822800",
+                    "on-primary-fixed": "#380c00",
+                    "outline": "#8c7071",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#ea6f42",
+                    "on-primary-container": "#551700",
+                    "on-tertiary-fixed": "#360c19",
+                    "surface-container-high": "#e9e8e7",
+                    "on-background": "#1a1c1c",
+                    "surface-bright": "#faf9f8",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#ffb59c",
+                    "primary-fixed": "#ffdbcf",
+                    "primary": "#a43c12",
+                    "secondary-fixed-dim": "#e9c349",
+                    "surface-dim": "#dadad9",
+                    "secondary-fixed": "#ffe088",
+                    "tertiary": "#864e5a",
+                    "on-secondary-fixed-variant": "#574500",
+                    "surface-container": "#eeeeed",
+                    "surface-container-low": "#f4f3f2",
+                    "on-surface": "#1a1c1c",
+                    "on-surface-variant": "#584142",
+                    "inverse-surface": "#2f3130",
+                    "secondary": "#735c00",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#fed65b",
+                    "on-secondary": "#ffffff",
+                    "surface": "#faf9f8",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#a43c12",
+                    "on-tertiary-container": "#4b1d29"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glass-header {
+            background: rgba(250, 249, 248, 0.8);
+            backdrop-filter: blur(16px);
+        }
+        
+        .premium-shadow {
+            box-shadow: 0px 12px 32px rgba(88, 65, 66, 0.06);
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 1px rgba(164, 60, 18, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 glass-header flex justify-between items-center px-6 h-16 premium-shadow">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors duration-200" style="">
+<span class="material-symbols-outlined text-on-surface-variant" style="">arrow_back</span>
+</button>
+</div>
+<div class="font-headline tracking-tighter font-bold text-lg text-on-surface" style="">IDÉNTICA</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="Perfil de usuario" class="w-full h-full object-cover" data-alt="close up portrait of a stylish woman with warm lighting and a neutral studio background" src="https://i.pinimg.com/736x/19/1e/d7/191ed75e955b4990ccdd7b914757766c.jpg" style="">
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+<!-- Header Section -->
+<section class="mb-10">
+<span class="font-label text-xs font-bold uppercase tracking-widest text-primary mb-2 block" style="">Perfil de Estilo</span>
+<h1 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-3" style="">Tus medidas, tu ajuste.</h1>
+<p class="text-on-surface-variant leading-relaxed" style="">Personaliza tu experiencia de IA. Usamos estos datos para que cada sugerencia de nuestro "Digital Atelier" sea exacta para tu cuerpo.</p>
+</section>
+<form class="space-y-10">
+<!-- Measurement Bento Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Estatura -->
+<div class="bg-surface-container-lowest p-6 rounded-xl premium-shadow flex flex-col space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary scale-75" style="">straighten</span>
+</div>
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="height" style="">Estatura</label>
+</div>
+<div class="flex items-end gap-2">
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id="height" placeholder="170" type="number">
+<span class="pb-3 font-label text-xs font-bold text-outline" style="">cm</span>
+</div>
+</div>
+<!-- Peso -->
+<div class="bg-surface-container-lowest p-6 rounded-xl premium-shadow flex flex-col space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary scale-75" style="">monitor_weight</span>
+</div>
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="weight" style="">Peso</label>
+</div>
+<div class="flex items-end gap-2">
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id="weight" placeholder="65" type="number">
+<span class="pb-3 font-label text-xs font-bold text-outline" style="">kg</span>
+</div>
+</div>
+<!-- Camisa -->
+<div class="bg-surface-container-lowest p-6 rounded-xl premium-shadow flex flex-col space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary scale-75" style="">apparel</span>
+</div>
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="shirt" style="">Talla Camisa</label>
+</div>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id="shirt" placeholder="M" type="text">
+</div>
+<!-- Pantalón -->
+<div class="bg-surface-container-lowest p-6 rounded-xl premium-shadow flex flex-col space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary scale-75" style="">layers</span>
+</div>
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="pants" style="">Talla Pantalón</label>
+</div>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id="pants" placeholder="32" type="text">
+</div>
+</div>
+<!-- Fit Selection (Asymmetrical / Editorial Layout) -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-xl font-bold text-on-surface" style="">Tu ajuste preferido</h2>
+<span class="material-symbols-outlined text-primary scale-75" title="Saber más sobre ajustes" style="">info</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Ajustado -->
+<label class="group relative block cursor-pointer" style="">
+<input class="sr-only peer" name="fit" type="radio" value="adjusted">
+<div class="bg-surface-container-low peer-checked:bg-tertiary-container peer-checked:text-white flex items-center p-5 rounded-2xl transition-all duration-300 group-hover:bg-surface-container-high">
+<div class="flex-1">
+<p class="font-headline font-bold text-lg mb-1" style="">Ajustado</p>
+<p class="text-sm opacity-80 font-medium" style="">Cerca del cuerpo, silueta definida.</p>
+</div>
+<div class="w-16 h-16 rounded-xl bg-surface-container-lowest/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="">accessibility_new</span>
+</div>
+</div>
+</label>
+<!-- Regular (Active Style Suggestion) -->
+<label class="group relative block cursor-pointer" style="">
+<input checked="" class="sr-only peer" name="fit" type="radio" value="regular">
+<div class="bg-surface-container-low peer-checked:bg-tertiary-container peer-checked:text-white flex items-center p-5 rounded-2xl transition-all duration-300 group-hover:bg-surface-container-high shadow-lg">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<p class="font-headline font-bold text-lg" style="">Regular</p>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-tighter" style="">Sugerido</span>
+</div>
+<p class="text-sm opacity-80 font-medium" style="">Equilibrio perfecto, clásico y cómodo.</p>
+</div>
+<div class="w-16 h-16 rounded-xl bg-surface-container-lowest/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="">person</span>
+</div>
+</div>
+</label>
+<!-- Oversize -->
+<label class="group relative block cursor-pointer" style="">
+<input class="sr-only peer" name="fit" type="radio" value="oversize">
+<div class="bg-surface-container-low peer-checked:bg-tertiary-container peer-checked:text-white flex items-center p-5 rounded-2xl transition-all duration-300 group-hover:bg-surface-container-high">
+<div class="flex-1">
+<p class="font-headline font-bold text-lg mb-1" style="">Oversize</p>
+<p class="text-sm opacity-80 font-medium" style="">Relajado, holgado y con estilo urbano.</p>
+</div>
+<div class="w-16 h-16 rounded-xl bg-surface-container-lowest/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="">checkroom</span>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Insight Note -->
+<div class="p-6 bg-surface-container-low rounded-2xl border-l-4 border-tertiary flex gap-4">
+<span class="material-symbols-outlined text-tertiary" style="">lightbulb</span>
+<p class="text-sm text-on-tertiary-fixed-variant leading-relaxed" style="">
+<strong>Tip del Atelier:</strong> Si estás entre dos tallas, un ajuste <strong>Regular</strong> suele ser la opción más versátil para la mayoría de los tejidos que analizamos.
+                </p>
+</div>
+</form>
+</main>
+<!-- Fixed Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full p-6 glass-header">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 rounded-full font-headline font-bold text-lg premium-shadow active:scale-95 transition-transform duration-200" style="">
+            Continuar
+        </button>
+</div>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/90 backdrop-blur-2xl rounded-t-[2rem] shadow-[0px_-8px_24px_rgba(88,65,66,0.04)] md:hidden pointer-events-none opacity-20 transition-opacity duration-300 hover:opacity-100">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined" style="">auto_awesome</span>
+<span class="font-label text-[10px] font-medium tracking-wide uppercase" style="">Estudio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined" style="">photo_camera</span>
+<span class="font-label text-[10px] font-medium tracking-wide uppercase" style="">Analizar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined" style="">apparel</span>
+<span class="font-label text-[10px] font-medium tracking-wide uppercase" style="">Armario</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-tertiary-container text-white rounded-full px-6 py-2">
+<span class="material-symbols-outlined" style="">person</span>
+<span class="font-label text-[10px] font-medium tracking-wide uppercase" style="">Perfil</span>
+</div>
+</nav>
+</body></html>

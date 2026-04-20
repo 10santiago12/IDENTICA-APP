@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tu Selección Exclusiva - Digital Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#2f3130",
+                    "inverse-on-surface": "#f1f0f0",
+                    "secondary": "#735c00",
+                    "on-surface-variant": "#584142",
+                    "primary-fixed-dim": "#ffb59c",
+                    "on-primary-container": "#551700",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-tertiary-fixed": "#360c19",
+                    "secondary-fixed-dim": "#e9c349",
+                    "tertiary-container": "#c2828f",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-variant": "#e3e2e1",
+                    "on-tertiary-container": "#4b1d29",
+                    "background": "#faf9f8",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffd9df",
+                    "surface-bright": "#faf9f8",
+                    "primary": "#a43c12",
+                    "on-surface": "#1a1c1c",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#6b3743",
+                    "surface-tint": "#a43c12",
+                    "surface-container-low": "#f4f3f2",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface-dim": "#dadad9",
+                    "tertiary": "#864e5a",
+                    "surface": "#faf9f8",
+                    "inverse-primary": "#ffb59c",
+                    "outline-variant": "#e0bfc0",
+                    "on-primary-fixed": "#380c00",
+                    "surface-container-high": "#e9e8e7",
+                    "primary-container": "#ea6f42",
+                    "on-secondary-container": "#745c00",
+                    "secondary-container": "#fed65b",
+                    "outline": "#8c7071",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1a1c1c",
+                    "primary-fixed": "#ffdbcf",
+                    "tertiary-fixed-dim": "#fbb3c1",
+                    "surface-container": "#eeeeed",
+                    "secondary-fixed": "#ffe088",
+                    "on-primary-fixed-variant": "#822800",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .editorial-shadow { box-shadow: 0px 12px 32px rgba(88, 65, 66, 0.06); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-tertiary-fixed-dim">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#faf9f8]/80 dark:bg-[#1a1c1c]/80 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:opacity-80 transition-opacity" data-icon="menu">menu</span>
+<div class="flex items-center gap-2">
+<img alt="Digital Atelier Logo" class="h-8 w-8 object-contain" data-alt="minimalist professional logo for a fashion technology brand with elegant geometric lines in burnt orange" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQOnSm3sg0l7cTilsgpcE4SftVoDLJcgvjcsJG94FnBuo9Ga6XzEu72rcgmGQxNybIIJK8Lb8qrxDkYxajBJo_q1xrzxfN-ErXNJLv8KmvSRqsz-olkDzGhUje_F8_PkD5fwCe3OBnvCUYt1gPDXvRWQriP9acoBoQLecPLOROktWYEdOkKNFWfd9E2jUi7OoX1jL8j0aL05Cebc2KsWe1MDwgBIWhwRLYZAzqR1WX4BOogKInGVx2XLuT4mZQl8ylk_-BV3EvjIA"/>
+<span class="text-lg font-bold tracking-tight text-[#1a1c1c] dark:text-[#faf9f8] font-headline">Digital Atelier</span>
+</div>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant/20 transition-all active:scale-90 cursor-pointer">
+<img alt="User profile" class="h-full w-full object-cover" data-alt="portrait of a stylish woman with a warm smile and natural lighting in a studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdb2Nj5E2vvBFChWnVkiel7L0vS_xOBijd92_qzHENlTEN6f4xZPX2MP8y9Mk-vzO9TUNm1TEhwDQL8KMSZsdYmPDNFbbr72DNZYWi7yOevapbMK0iOGlw9TjZBnCmzTSS4kJfsS0jb6_7HbM9BuxfCbgTbj-xSys9QcBkxchgnEt5x7CEuxHL09c3eTjISViL-ZYm7ewTO8-X4t10_g8VJAn9CMUD8GmQxD-XwmxjO1qBhjy2LYx4qf2xOEQ3K77M45ZU2zgWvG0"/>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto min-h-screen">
+<!-- Hero Section -->
+<section class="mb-12">
+<h1 class="text-4xl md:text-5xl font-extrabold font-headline tracking-[-0.02em] text-on-surface mb-4">
+                Tu Selección Exclusiva
+            </h1>
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col md:flex-row md:items-center gap-6 relative overflow-hidden">
+<div class="z-10 flex-1">
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                        Basado en tu silueta <span class="text-primary font-bold">Reloj de Arena</span> y colorimetría <span class="text-primary font-bold">Otoño</span>, hemos seleccionado estos 3 looks para ti.
+                    </p>
+</div>
+<div class="hidden md:block absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</div>
+</section>
+<!-- Recommendations Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Outfit 1 -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
+<div class="relative aspect-[3/4] overflow-hidden">
+<img alt="Elegancia Otoñal" class="w-full h-full object-cover" data-alt="woman wearing high-waisted wide-leg camel trousers and a cream silk blouse in soft natural afternoon light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX7jheec1li9gXy-TfjaOrTzi4bWdZtrBuisouqE9GCYGahaHtEjXP_Pf88oD3hDT8YzjPiz_RvZ5ezVSi88eB5aLa-BVJZc6PgokX3XP7vCcW88Cz55rSJPGpftu0ofIbJDrsTfxMHbZNDsKI33i3hfJb0CTKZG8GyR_bevQS865_z_nj3V96mkmqVJ_JahGgoSPSHE0BvNYt9sjc0E6wZFWwY8IIHp_s4MWtCnQ_ny6punyauLmvXXSgETAeqxBvFQT6Nex8s8k"/>
+<div class="absolute top-4 right-4 bg-tertiary-container/90 text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+                        Ideal para ti
+                    </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-3">Elegancia Otoñal</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow">
+                        Resalta tu cintura y armoniza con tu tono de piel cálido mediante tonos tierra y texturas suaves.
+                    </p>
+<button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
+                        Ver detalles
+                    </button>
+</div>
+</article>
+<!-- Outfit 2 -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
+<div class="relative aspect-[3/4] overflow-hidden">
+<img alt="Sofisticación Urbana" class="w-full h-full object-cover" data-alt="fashion model in a tailored terracotta blazer and dark denim jeans posing in a modern architectural setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxmo-Ri2yZlTc8slBZAYKt6ILgHD8MJpom-Sq4v2wnAaSTCBbV48hSuSkaXZtsS8dYfOxr0qBvm5UJSJqHFJxFcBTckudC3kiPs6Ape1tgEWhxF3A_nT4qGrLP4ObzjR-F_UagHcWeUH05yfxTNZ1qd7VShgxsLmriO7_MLG-ztatlMsL6GA9g6M-P0vsYZ6sOyDqIYORiTQAjQerrKkBtYRuk432qjX3SIYB4j9HHXuCUMSaRBELJc_DxxeNK3zfeKEIoui9LicQ"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-3">Sofisticación Urbana</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow">
+                        Estructura tus hombros manteniendo el foco en tu silueta central con este blazer de corte entallado.
+                    </p>
+<button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
+                        Ver detalles
+                    </button>
+</div>
+</article>
+<!-- Outfit 3 -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
+<div class="relative aspect-[3/4] overflow-hidden">
+<img alt="Balance Perfecto" class="w-full h-full object-cover" data-alt="woman wearing a midi wrap dress in a deep forest green color standing in a sunlit garden with editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0K3YgqrxBjLCOkRLa0sLDabSxwiuA-Nm8WCP40p6GtE_cBvOfFDnbPGCQR4Mt8xjHm2bS5-vM5ShvT9Y6K6twNHGNu0IemTAMXJW4Ul58R7isMvIqsoqOsALBkWY0JwcPt4Mw5tjhWfiDg2dbFHN50rw7Pw4546OSVC5V6R7s8RiV58_OzI4qn5sYUS3kmnlw3DhXenDOmraQ2JVEyBimBp0GY8HDvbJ4SQHf10akAKHXQEVlUv4BXjULwh7V-folzv3ieY0JNg8"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-3">Balance Perfecto</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow">
+                        El corte cruzado enfatiza tus curvas naturales mientras el verde oliva realza la calidez de tu mirada.
+                    </p>
+<button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
+                        Ver detalles
+                    </button>
+</div>
+</article>
+</div>
+<!-- AI Tip Section -->
+<section class="mt-16 bg-tertiary-fixed rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6">
+<div class="h-14 w-14 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="tips_and_updates" style="font-variation-settings: 'FILL' 1;">tips_and_updates</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-tertiary-fixed mb-1">Tip de Estilo AI</h4>
+<p class="text-on-tertiary-fixed-variant leading-snug">
+                    Para tu silueta Reloj de Arena, prioriza siempre las telas con caída que sigan la línea de tu cuerpo sin ocultarlo. El cinturón es tu mejor accesorio este otoño.
+                </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 bg-[#faf9f8]/90 dark:bg-[#1a1c1c]/90 backdrop-blur-2xl shadow-[0px_-4px_24px_rgba(88,65,66,0.04)] rounded-t-3xl">
+<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-60 hover:bg-[#f4f3f2] dark:hover:bg-[#2d2d2d] rounded-full transition-all px-4 py-1">
+<span class="material-symbols-outlined mb-1" data-icon="brush">brush</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-[0.1em] uppercase">Studio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-60 hover:bg-[#f4f3f2] dark:hover:bg-[#2d2d2d] rounded-full transition-all px-4 py-1">
+<span class="material-symbols-outlined mb-1" data-icon="analytics">analytics</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-[0.1em] uppercase">Analyze</span>
+</div>
+<!-- Active Tab: Wardrobe -->
+<div class="flex flex-col items-center justify-center bg-[#c2828f] text-white rounded-full px-5 py-2 scale-105 transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="checkroom" style="font-variation-settings: 'FILL' 1;">checkroom</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-[0.1em] uppercase">Wardrobe</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-60 hover:bg-[#f4f3f2] dark:hover:bg-[#2d2d2d] rounded-full transition-all px-4 py-1">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-[0.1em] uppercase">Profile</span>
+</div>
+</nav>
+</body></html>
