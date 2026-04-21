@@ -47,29 +47,6 @@
       background: #fff;
     }
 
-    .main-cta {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 20px;
-      width: min(440px, calc(100% - 24px));
-      border: 0;
-      border-radius: 999px;
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-      cursor: pointer;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
-      box-shadow: 0 14px 32px rgba(178, 72, 31, 0.32);
-      transition: transform 120ms ease;
-      z-index: 20;
-    }
-
-    .main-cta:active {
-      transform: translateX(-50%) scale(0.98);
-    }
-
     @media (min-width: 900px) {
       .app-screen {
         margin-top: 0;
@@ -82,8 +59,6 @@
   <main class="app-screen">
     <iframe id="appFrame" title="IDENTICA" loading="eager"></iframe>
   </main>
-
-  <button id="nextBtn" class="main-cta" type="button">Continuar</button>
 
   <script>
     const routes = [
@@ -98,7 +73,6 @@
 
     const STORAGE_KEY = "identica-current-route";
     const frame = document.getElementById("appFrame");
-    const nextBtn = document.getElementById("nextBtn");
 
     let currentIndex = 0;
     let lastAppliedHash = "";
@@ -131,11 +105,6 @@
       globalThis.location.hash = routeId;
     }
 
-    function updateMainCtaLabel() {
-      const next = getNextRoute();
-      nextBtn.textContent = `Continuar a ${next.title}`;
-    }
-
     function navigateTo(routeId, updateHash = false) {
       const index = getRouteIndexById(routeId);
       if (index < 0) return;
@@ -145,7 +114,6 @@
 
       frame.src = route.path;
       localStorage.setItem(STORAGE_KEY, route.id);
-      updateMainCtaLabel();
 
       if (updateHash) setHash(route.id);
     }
@@ -160,7 +128,6 @@
 
       if (value.includes("comenzar")) return "perfil";
       if (value.includes("continuar")) return "foto";
-      if (value.includes("subir imagen") || value.includes("subir foto") || value.includes("camara") || value.includes("galeria")) return "analisis";
       if (value.includes("ver resultados")) return "resultados";
       if (value.includes("comprar segun mi perfil") || value.includes("recomendaciones completas") || value.includes("comprar")) return "outfits";
       if (value.includes("guardar resultados")) return "final";
@@ -187,7 +154,23 @@
           const clickable = target.closest("button, a");
           if (!clickable) return;
 
-          const destination = routeFromIntent(clickable.textContent || "");
+          const activeRoute = getCurrentRoute();
+          const rawText = clickable.textContent || "";
+          const normalizedText = rawText.toLowerCase().trim();
+
+          // En pantalla de foto dejamos que Subir/Camara/Galeria ejecuten su seleccion nativa.
+          if (
+            activeRoute &&
+            activeRoute.id === "foto" &&
+            (normalizedText.includes("subir imagen") ||
+              normalizedText.includes("subir foto") ||
+              normalizedText.includes("camara") ||
+              normalizedText.includes("galeria"))
+          ) {
+            return;
+          }
+
+          const destination = routeFromIntent(rawText);
           if (!destination) return;
 
           event.preventDefault();
@@ -197,10 +180,6 @@
         // Same-origin expected. If not accessible, keep shell navigation only.
       }
     }
-
-    nextBtn.addEventListener("click", () => {
-      goNext(true);
-    });
 
     frame.addEventListener("load", () => {
       bindFrameClickNavigation();
@@ -214,10 +193,6 @@
       if (currentRoute && currentRoute.id === routeId) return;
 
       navigateTo(routeId, false);
-    });
-
-    globalThis.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowRight") goNext(true);
     });
 
     navigateTo(readInitialRouteId(), false);

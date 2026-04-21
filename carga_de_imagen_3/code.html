@@ -1,6 +1,7 @@
 <!DOCTYPE html><html lang="es"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>IDÉNTICA - Carga de imagen</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -93,6 +94,9 @@
   </style>
   </head>
 <body class="bg-background text-on-surface font-body selection:bg-tertiary-container selection:text-on-tertiary-container">
+<input accept="image/*" class="hidden" id="camera-input" type="file" capture="environment"/>
+  <title>IDÉNTICA - Carga de imagen</title>
+<input accept="image/*" class="hidden" id="gallery-input" type="file"/>
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-[#faf9f8]/80 dark:bg-[#1a1c1c]/80 backdrop-blur-md shadow-[0px_12px_32px_rgba(88,65,66,0.06)] flex justify-between items-center px-6 h-16 w-full">
 <div class="flex items-center gap-4">
@@ -123,31 +127,25 @@
 <!-- Decorative Elements -->
 <div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/10 rounded-full blur-3xl"></div>
 <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+<img alt="Vista previa seleccionada" class="absolute inset-0 hidden h-full w-full object-cover" id="upload-preview"/>
 <!-- Center UI -->
-<div class="relative z-10 flex flex-col items-center">
-<div class="w-24 h-24 mb-6 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-[0px_12px_32px_rgba(88,65,66,0.06)] group-hover:scale-105 transition-transform duration-500">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="upload_file" style="">upload_file</span>
+<div class="relative z-20 flex flex-col items-center" id="upload-ui">
+<div class="w-24 h-24 mb-6 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-[0px_12px_32px_rgba(88,65,66,0.06)] group-hover:scale-105 transition-transform duration-500" id="upload-icon-shell">
+<span class="material-symbols-outlined text-primary text-4xl opacity-70" data-icon="upload_file" id="upload-icon" style="">upload_file</span>
 </div>
-<button class="bg-atelier-gradient text-on-primary px-10 py-4 rounded-full font-headline font-bold text-lg shadow-[0px_8px_20px_rgba(164,60,18,0.2)] hover:brightness-110 active:scale-95 transition-all mb-4" style="">
+<button class="bg-atelier-gradient text-on-primary px-10 py-4 rounded-full font-headline font-bold text-lg shadow-[0px_8px_20px_rgba(164,60,18,0.2)] transition-all mb-4 opacity-60 cursor-not-allowed" disabled="" id="upload-button" type="button" style="">
                         Subir imagen
                     </button>
-<p class="text-on-surface-variant/60 font-medium text-sm" style="">
-                        o arrastra y suelta tu archivo aquí
-                    </p>
-</div>
-<!-- Silhouettes Overlay (Editorial touch) -->
-<div class="absolute bottom-0 right-0 opacity-20 group-hover:opacity-30 transition-opacity">
-<img alt="Silhouette" class="h-64 object-contain translate-y-12 grayscale" data-alt="soft minimalist silhouette of a stylish woman posing against a clean neutral background, high fashion editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT9D8GYgK8aZ8jOq6y5B3UZ1md8xCh_Ra6vDApbTEiU6RMYKE4Do9dmm9Iet8FZxmMSNHpXwb_ZjL0Lzm87s6urYPcm1rcfvvXgl0mB-JJpcC0sk_8JIoglv73-iDyYWYKC57SW2bpqlYKLP_CqmSckbuaTmno7OvHLfk3zNVtVI3yToX1BiS5GahjBnt60N9dlm4N-1dr7L8UmAWVdP-2ZWY7YIWSmVPrYt6OLjO-7p-ZS1MT42RTInmbdKOgTgoIU1jiMPcqmpo" style="">
 </div>
 </div>
 </section>
 <!-- Secondary Actions -->
 <section class="grid grid-cols-2 gap-4 mb-12">
-<button class="flex items-center justify-center gap-3 bg-secondary-container text-on-secondary-container py-4 rounded-2xl font-bold hover:brightness-105 transition-all active:scale-95" style="">
+<button class="flex items-center justify-center gap-3 bg-secondary-container text-on-secondary-container py-4 rounded-2xl font-bold hover:brightness-105 transition-all active:scale-95" id="camera-button" type="button" style="">
 <span class="material-symbols-outlined" data-icon="photo_camera" style="">photo_camera</span>
                 Cámara
             </button>
-<button class="flex items-center justify-center gap-3 bg-surface-container-highest text-on-surface py-4 rounded-2xl font-bold hover:bg-surface-variant transition-all active:scale-95" style="">
+<button class="flex items-center justify-center gap-3 bg-surface-container-highest text-on-surface py-4 rounded-2xl font-bold hover:bg-surface-variant transition-all active:scale-95" id="gallery-button" type="button" style="">
 <span class="material-symbols-outlined" data-icon="photo_library" style="">photo_library</span>
                 Galería
             </button>
@@ -217,4 +215,71 @@
 <span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase" style="">Profile</span>
 </div>
 </nav>
+<script>
+  (function () {
+    const cameraInput = document.getElementById("camera-input");
+    const galleryInput = document.getElementById("gallery-input");
+    const uploadButton = document.getElementById("upload-button");
+    const uploadPreview = document.getElementById("upload-preview");
+    const uploadIcon = document.getElementById("upload-icon");
+    const uploadIconShell = document.getElementById("upload-icon-shell");
+    const cameraButton = document.getElementById("camera-button");
+    const galleryButton = document.getElementById("gallery-button");
+    let selectedFile = null;
+
+    function getSessionStore() {
+      if (!window.top.__identicaSessionStore) {
+        window.top.__identicaSessionStore = {};
+      }
+      return window.top.__identicaSessionStore;
+    }
+
+    function saveSelectedImage(file, source) {
+      if (!file) return;
+      selectedFile = file;
+      const store = getSessionStore();
+      store.upload = {
+        fileName: file.name,
+        fileType: file.type,
+        source,
+        selectedAt: Date.now()
+      };
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        store.upload.previewDataUrl = reader.result;
+        uploadPreview.src = reader.result;
+        uploadPreview.classList.remove("hidden");
+        uploadButton.disabled = false;
+        uploadButton.classList.remove("opacity-60", "cursor-not-allowed");
+        uploadButton.classList.add("hover:brightness-110", "active:scale-95");
+        uploadButton.textContent = "Subir imagen";
+        uploadIcon.textContent = "check_circle";
+        uploadIconShell.classList.add("bg-white/88", "backdrop-blur-sm");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    uploadButton.addEventListener("click", () => {
+      if (!selectedFile) return;
+      const store = getSessionStore();
+      if (store.upload) {
+        store.upload.submittedForAnalysis = true;
+      }
+      window.top.location.hash = "analisis";
+    });
+    cameraButton.addEventListener("click", () => cameraInput.click());
+    galleryButton.addEventListener("click", () => galleryInput.click());
+
+    cameraInput.addEventListener("change", (event) => {
+      const file = event.target.files && event.target.files[0];
+      saveSelectedImage(file, "camera");
+    });
+
+    galleryInput.addEventListener("change", (event) => {
+      const file = event.target.files && event.target.files[0];
+      saveSelectedImage(file, "gallery");
+    });
+  })();
+</script>
 </body></html>

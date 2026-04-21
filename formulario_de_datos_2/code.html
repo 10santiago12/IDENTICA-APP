@@ -97,6 +97,14 @@
             outline: none;
             box-shadow: 0 0 0 1px rgba(164, 60, 18, 0.2);
         }
+
+        #continue-btn:disabled {
+          background: #d7d0cb;
+          color: #4a3f37;
+          box-shadow: none;
+          cursor: not-allowed;
+          transform: none;
+        }
     </style>
 <style>
     body {
@@ -136,7 +144,7 @@
 <label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="height">Estatura</label>
 </div>
 <div class="flex items-end gap-2">
-<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id="height" placeholder="170" type="number"/>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id="height" inputmode="decimal" placeholder="170" type="text"/>
 <span class="pb-3 font-label text-xs font-bold text-outline">cm</span>
 </div>
 </div>
@@ -149,7 +157,7 @@
 <label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="weight">Peso</label>
 </div>
 <div class="flex items-end gap-2">
-<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id="weight" placeholder="65" type="number"/>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-xl font-headline font-bold text-on-surface focus:bg-surface-container-lowest transition-all" id="weight" inputmode="decimal" placeholder="65" type="text"/>
 <span class="pb-3 font-label text-xs font-bold text-outline">kg</span>
 </div>
 </div>
@@ -236,27 +244,117 @@
 </main>
 <!-- Fixed Bottom Action Area -->
 <div class="fixed bottom-0 left-0 w-full p-6 glass-header">
-<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 rounded-full font-headline font-bold text-lg premium-shadow active:scale-95 transition-transform duration-200">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 rounded-full font-headline font-bold text-lg premium-shadow active:scale-95 transition-transform duration-200" id="continue-btn" type="button" disabled="">
             Continuar
         </button>
 </div>
-<!-- Bottom Navigation Shell (Filter Logic: Hide on Focus journeys, but showing for brand identity context as per instructions) -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/90 backdrop-blur-2xl rounded-t-[2rem] shadow-[0px_-8px_24px_rgba(88,65,66,0.04)] md:hidden pointer-events-none opacity-20 transition-opacity duration-300 hover:opacity-100">
-<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
-<span class="material-symbols-outlined">auto_awesome</span>
-<span class="font-label text-[10px] font-medium tracking-wide uppercase">Studio</span>
-</div>
-<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
-<span class="material-symbols-outlined">photo_camera</span>
-<span class="font-label text-[10px] font-medium tracking-wide uppercase">Analyze</span>
-</div>
-<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
-<span class="material-symbols-outlined">apparel</span>
-<span class="font-label text-[10px] font-medium tracking-wide uppercase">Wardrobe</span>
-</div>
-<div class="flex flex-col items-center justify-center bg-tertiary-container text-white rounded-full px-6 py-2">
-<span class="material-symbols-outlined">person</span>
-<span class="font-label text-[10px] font-medium tracking-wide uppercase">Profile</span>
-</div>
-</nav>
+<script>
+  (function () {
+    const fields = {
+      height: document.getElementById("height"),
+      weight: document.getElementById("weight"),
+      shirt: document.getElementById("shirt"),
+      pants: document.getElementById("pants")
+    };
+
+    const continueBtn = document.getElementById("continue-btn");
+    const fitRadios = Array.from(document.querySelectorAll('input[name="fit"]'));
+    const DECIMAL_REGEX = /^\d+(?:[.,]\d+)?$/;
+    const LETTERS_REGEX = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+$/;
+    const ALPHANUMERIC_REGEX = /^[A-Za-z0-9]+$/;
+
+    function normalizeSpaces(value) {
+      return value.replaceAll(/\s+/g, " ").trim();
+    }
+
+    function normalizeDecimal(value) {
+      return value.replace(",", ".").trim();
+    }
+
+    function getSessionStore() {
+      if (!window.top.__identicaSessionStore) {
+        window.top.__identicaSessionStore = {};
+      }
+      return window.top.__identicaSessionStore;
+    }
+
+    function getSelectedFit() {
+      const selected = fitRadios.find((radio) => radio.checked);
+      return selected ? selected.value : "regular";
+    }
+
+    function getFormData() {
+      return {
+        height: normalizeDecimal(fields.height.value),
+        weight: normalizeDecimal(fields.weight.value),
+        shirt: normalizeSpaces(fields.shirt.value),
+        pants: normalizeSpaces(fields.pants.value),
+        fit: getSelectedFit()
+      };
+    }
+
+    function isValidDecimal(value) {
+      return DECIMAL_REGEX.test(value) && Number(value.replace(",", ".")) > 0;
+    }
+
+    function isValidShirt(value) {
+      return LETTERS_REGEX.test(value);
+    }
+
+    function isValidPants(value) {
+      return ALPHANUMERIC_REGEX.test(value);
+    }
+
+    function isComplete(data) {
+      return (
+        isValidDecimal(data.height) &&
+        isValidDecimal(data.weight) &&
+        isValidShirt(data.shirt) &&
+        isValidPants(data.pants)
+      );
+    }
+
+    function saveData() {
+      const store = getSessionStore();
+      store.profile = getFormData();
+    }
+
+    function updateContinueState() {
+      const data = getFormData();
+      continueBtn.disabled = !isComplete(data);
+    }
+
+    function hydrateFromSession() {
+      const store = getSessionStore();
+      const profile = store.profile;
+      if (!profile) return;
+
+      fields.height.value = profile.height || "";
+      fields.weight.value = profile.weight || "";
+      fields.shirt.value = profile.shirt || "";
+      fields.pants.value = profile.pants || "";
+
+      if (profile.fit) {
+        fitRadios.forEach((radio) => {
+          radio.checked = radio.value === profile.fit;
+        });
+      }
+    }
+
+    [fields.height, fields.weight, fields.shirt, fields.pants].forEach((input) => {
+      input.addEventListener("input", () => {
+        saveData();
+        updateContinueState();
+      });
+    });
+
+    fitRadios.forEach((radio) => {
+      radio.addEventListener("change", saveData);
+    });
+
+    hydrateFromSession();
+    saveData();
+    updateContinueState();
+  })();
+</script>
 </body></html>
