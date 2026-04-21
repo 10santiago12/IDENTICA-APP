@@ -127,7 +127,8 @@
 <article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
 <div class="relative aspect-[3/4] overflow-hidden">
 <div class="w-full h-full bg-surface-container-low flex items-center justify-center">
-<div class="text-center">
+<img alt="Outfit recomendado 1" class="w-full h-full object-cover" id="outfit1-image" src=""/>
+<div class="text-center absolute inset-0 flex flex-col items-center justify-center" id="outfit1-fallback">
 <span class="material-symbols-outlined text-primary text-7xl" style="font-variation-settings: 'FILL' 1;">checkroom</span>
 <p class="text-xs tracking-widest uppercase text-on-surface-variant mt-3">Look personalizado</p>
 </div>
@@ -141,16 +142,14 @@
 <p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow" id="outfit1-description">
                         Resalta tu cintura y armoniza con tu tono de piel cálido mediante tonos tierra y texturas suaves.
                     </p>
-<button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
-                        Ver detalles
-                    </button>
 </div>
 </article>
 <!-- Outfit 2 -->
 <article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
 <div class="relative aspect-[3/4] overflow-hidden">
 <div class="w-full h-full bg-surface-container-low flex items-center justify-center">
-<div class="text-center">
+<img alt="Outfit recomendado 2" class="w-full h-full object-cover" id="outfit2-image" src=""/>
+<div class="text-center absolute inset-0 flex flex-col items-center justify-center" id="outfit2-fallback">
 <span class="material-symbols-outlined text-primary text-7xl" style="font-variation-settings: 'FILL' 1;">style</span>
 <p class="text-xs tracking-widest uppercase text-on-surface-variant mt-3">Combinación sugerida</p>
 </div>
@@ -161,16 +160,14 @@
 <p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow" id="outfit2-description">
                         Estructura tus hombros manteniendo el foco en tu silueta central con este blazer de corte entallado.
                     </p>
-<button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
-                        Ver detalles
-                    </button>
 </div>
 </article>
 <!-- Outfit 3 -->
 <article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
 <div class="relative aspect-[3/4] overflow-hidden">
 <div class="w-full h-full bg-surface-container-low flex items-center justify-center">
-<div class="text-center">
+<img alt="Outfit recomendado 3" class="w-full h-full object-cover" id="outfit3-image" src=""/>
+<div class="text-center absolute inset-0 flex flex-col items-center justify-center" id="outfit3-fallback">
 <span class="material-symbols-outlined text-primary text-7xl" style="font-variation-settings: 'FILL' 1;">diamond</span>
 <p class="text-xs tracking-widest uppercase text-on-surface-variant mt-3">Selección atelier</p>
 </div>
@@ -181,9 +178,6 @@
 <p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow" id="outfit3-description">
                         El corte cruzado enfatiza tus curvas naturales mientras el verde oliva realza la calidez de tu mirada.
                     </p>
-<button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
-                        Ver detalles
-                    </button>
 </div>
 </article>
 </div>
@@ -197,6 +191,10 @@
 <p class="text-on-tertiary-fixed-variant leading-snug" id="ai-tip-text">
                     Para tu silueta Reloj de Arena, prioriza siempre las telas con caída que sigan la línea de tu cuerpo sin ocultarlo. El cinturón es tu mejor accesorio este otoño.
                 </p>
+<button class="mt-5 w-full md:w-auto py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20 inline-flex items-center justify-center gap-2" id="finish-advice-btn" type="button">
+Finalizar asesoría
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
 </div>
 </section>
 </main>
@@ -284,17 +282,61 @@
       setText("outfit-badge", `Ideal para ${morphology.label}`);
     }
 
+    function applyOutfitImages(morphologyKey) {
+      const baseByMorph = {
+        hourglass: "../outfits_morfologia/reloj-de-arena",
+        pear: "../outfits_morfologia/pera",
+        rectangle: "../outfits_morfologia/rectangular",
+        inverted_triangle: "../outfits_morfologia/triangulo-invertido",
+        oval: "../outfits_morfologia/ovalo"
+      };
+
+      const basePath = baseByMorph[morphologyKey] || baseByMorph.hourglass;
+      const extensions = ["png", "jpg", "jpeg", "webp"];
+
+      [1, 2, 3].forEach((index) => {
+        const image = document.getElementById(`outfit${index}-image`);
+        const fallback = document.getElementById(`outfit${index}-fallback`);
+        if (!image || !fallback) return;
+
+        let currentExtensionIndex = 0;
+
+        function tryNextSource() {
+          if (currentExtensionIndex >= extensions.length) {
+            image.style.display = "none";
+            fallback.style.display = "flex";
+            return;
+          }
+
+          const ext = extensions[currentExtensionIndex];
+          currentExtensionIndex += 1;
+          image.src = `${basePath}/outfit${index}.${ext}`;
+        }
+
+        image.onload = function handleOutfitImageLoad() {
+          image.style.display = "block";
+          fallback.style.display = "none";
+        };
+
+        image.onerror = function handleOutfitImageError() {
+          tryNextSource();
+        };
+
+        tryNextSource();
+      });
+    }
+
     function initBottomNav(activeRoute) {
       const nav = document.getElementById("bottom-nav");
       if (!nav) return;
       const items = nav.querySelectorAll("[data-route]");
       items.forEach((item) => {
         item.addEventListener("click", () => {
-          const route = item.getAttribute("data-route");
+          const route = item.dataset.route;
           if (route) window.top.location.hash = route;
         });
 
-        const route = item.getAttribute("data-route");
+        const route = item.dataset.route;
         if (route === activeRoute) {
           item.classList.add("bg-[#c2828f]", "text-white", "rounded-full", "px-6", "py-2");
           item.classList.remove("opacity-70");
@@ -312,7 +354,15 @@
       setHero(morphologyLabel, seasonTitle);
       applyOutfitContent(data.recommendations, seasonTitle, morphologyLabel);
       applyTip(data);
+      applyOutfitImages(data.morphology ? data.morphology.key : "hourglass");
       initBottomNav("outfits");
+
+      const finishBtn = document.getElementById("finish-advice-btn");
+      if (finishBtn) {
+        finishBtn.addEventListener("click", () => {
+          window.top.location.hash = "final";
+        });
+      }
     }
 
     init();

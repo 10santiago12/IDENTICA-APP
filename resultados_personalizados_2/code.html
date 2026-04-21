@@ -135,20 +135,17 @@
 <span class="text-tertiary font-bold text-xs tracking-widest uppercase mb-4 block" style="">Morfología</span>
 <h3 class="text-3xl font-bold mb-4" id="morphology-title" style="">Silueta Reloj de Arena</h3>
 <p class="text-on-surface-variant leading-relaxed mb-6" id="morphology-description" style="">Tus hombros y caderas están equilibrados, con una cintura claramente definida. Esta proporción armoniosa permite un estilismo versátil que realza tus curvas naturales.</p>
-<div class="flex gap-2">
+<div class="flex flex-wrap gap-2">
 <span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-hourglass" style="">Reloj de Arena</span>
-<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-balanced" style="">Equilibrada</span>
-<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-curvy" style="">Curvilínea</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-pear" style="">Pera</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-rectangle" style="">Rectangular</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-inverted" style="">Triángulo Invertido</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-oval" style="">Óvalo</span>
 </div>
 </div>
 <div class="w-full md:w-1/2 flex justify-center relative">
-<div class="relative bg-surface-container-low rounded-2xl p-4 w-full aspect-[3/4] flex items-center justify-center">
-<span class="material-symbols-outlined text-[120px] text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">accessibility_new</span>
-<!-- Decorative Silhouettes -->
-<div class="absolute inset-0 flex justify-between px-8 items-center opacity-10 pointer-events-none">
-<span class="material-symbols-outlined text-4xl" style="">woman</span>
-<span class="material-symbols-outlined text-4xl" style="">styler</span>
-</div>
+<div class="relative bg-surface-container-low rounded-2xl p-4 w-full aspect-[3/4] flex items-center justify-center" id="morphology-image-holder">
+<img alt="Silueta de morfología" class="w-full h-full object-contain" id="morphology-image" src=""/>
 </div>
 </div>
 </div>
@@ -298,8 +295,8 @@
 </div>
 <!-- Call to Action -->
 <section class="mt-20 text-center">
-<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 inline-flex items-center gap-3" style="">
-            Comprar según mi Perfil
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 inline-flex items-center gap-3" id="go-outfits-btn" style="">
+            Outfits Recomendados
             <span class="material-symbols-outlined" style="">arrow_forward</span>
 </button>
 <p class="mt-6 text-on-surface-variant text-sm max-w-md mx-auto" style="">Explora prendas seleccionadas que combinan con tu morfología específica y paleta de colores en la sección Armario.</p>
@@ -367,39 +364,128 @@
             return Number.isFinite(parsed) ? parsed : fallback;
         }
 
+        function normalizeAlpha(value) {
+            return String(value || "").trim().toLowerCase();
+        }
+
+        function parseShirtSize(shirt) {
+            const key = normalizeAlpha(shirt).replace(/\s+/g, "");
+            const map = {
+                xs: 1,
+                s: 2,
+                m: 3,
+                l: 4,
+                xl: 5,
+                xxl: 6,
+                xxl2: 7
+            };
+            if (map[key]) return map[key];
+            if (map[key.replace("2", "")]) return map[key.replace("2", "")];
+            return 3;
+        }
+
+        function parsePantsSize(pants) {
+            const raw = normalizeAlpha(pants);
+            const numeric = Number(raw.match(/\d+/)?.[0]);
+            if (Number.isFinite(numeric)) {
+                if (numeric <= 28) return 2;
+                if (numeric <= 32) return 3;
+                if (numeric <= 36) return 4;
+                return 5;
+            }
+
+            const letterMap = {
+                xs: 1,
+                s: 2,
+                m: 3,
+                l: 4,
+                xl: 5,
+                xxl: 6
+            };
+
+            return letterMap[raw] || 3;
+        }
+
         function buildMorphology(profile) {
             const height = parseNumber(profile.height, 165);
             const weight = parseNumber(profile.weight, 60);
             const fit = profile.fit || "regular";
             const bmi = weight / Math.pow(height / 100, 2);
+            const shirtSize = parseShirtSize(profile.shirt);
+            const pantsSize = parsePantsSize(profile.pants);
+            const upperLowerDelta = shirtSize - pantsSize;
 
             const score = {
                 hourglass: 45,
-                balanced: 45,
-                curvy: 45
+                pear: 45,
+                rectangle: 45,
+                inverted_triangle: 45,
+                oval: 45
             };
 
-            if (fit === "adjusted") score.hourglass += 18;
-            if (fit === "regular") score.balanced += 16;
-            if (fit === "oversize") score.curvy += 12;
+            if (fit === "adjusted") {
+                score.hourglass += 18;
+                score.inverted_triangle += 5;
+            }
 
-            if (bmi >= 20 && bmi <= 27) score.hourglass += 10;
-            if (bmi >= 18 && bmi <= 24.9) score.balanced += 12;
-            if (bmi >= 24) score.curvy += 14;
+            if (fit === "regular") {
+                score.rectangle += 14;
+                score.hourglass += 4;
+            }
+
+            if (fit === "oversize") {
+                score.oval += 16;
+                score.rectangle += 8;
+            }
+
+            if (upperLowerDelta <= -1) score.pear += 22;
+            if (upperLowerDelta >= 1) score.inverted_triangle += 22;
+            if (Math.abs(upperLowerDelta) <= 0.4) {
+                score.rectangle += 12;
+                score.hourglass += 8;
+            }
+
+            if (bmi < 20) {
+                score.rectangle += 10;
+                score.inverted_triangle += 8;
+            } else if (bmi < 25) {
+                score.hourglass += 11;
+                score.pear += 6;
+            } else if (bmi < 30) {
+                score.pear += 12;
+                score.oval += 10;
+            } else {
+                score.oval += 18;
+                score.pear += 8;
+            }
+
+            if (height < 160) {
+                score.pear += 6;
+                score.hourglass += 4;
+            }
+
+            if (height > 172) {
+                score.inverted_triangle += 6;
+                score.rectangle += 4;
+            }
 
             const top = Object.entries(score).sort((a, b) => b[1] - a[1]);
             const winner = top[0][0];
 
             const labels = {
                 hourglass: "Reloj de Arena",
-                balanced: "Equilibrada",
-                curvy: "Curvilínea"
+                pear: "Pera",
+                rectangle: "Rectangular",
+                inverted_triangle: "Triángulo Invertido",
+                oval: "Óvalo"
             };
 
             const descriptions = {
-                hourglass: "Tus proporciones muestran equilibrio entre hombros y cadera, con énfasis natural en la cintura. Te favorecen prendas que definan la silueta.",
-                balanced: "Tu estructura corporal se percibe armónica y proporcional. Te favorecen cortes limpios y combinaciones versátiles con volumen moderado.",
-                curvy: "Tu silueta proyecta volumen orgánico y presencia. Te favorecen líneas estructuradas y telas con caída que acompañen el movimiento del cuerpo."
+                hourglass: "Tus hombros y caderas están en equilibrio con cintura definida. Te favorecen prendas que marcan la línea natural del cuerpo.",
+                pear: "Tu cadera tiene mayor presencia visual que el torso. Te favorece dar estructura arriba y mantener caída limpia en la parte inferior.",
+                rectangle: "Tus proporciones son rectas y armónicas entre torso, cintura y cadera. Te favorecen cortes que construyan forma y dimensión.",
+                inverted_triangle: "Tu torso y hombros destacan más que la cadera. Te favorece equilibrar volumen hacia la parte inferior del look.",
+                oval: "Tu centro corporal tiene mayor protagonismo visual. Te favorecen líneas verticales, estructura suave y puntos focales estratégicos."
             };
 
             return {
@@ -492,7 +578,14 @@
         function buildFacialCopy(colorProfile, morphology) {
             const contrast = colorProfile.eyes.label === "Café" || colorProfile.hair.label.includes("Oscuro") ? "Contraste Alto" : "Contraste Medio";
             const warmth = colorProfile.undertone.label === "Cálido" ? "Brillo Cálido" : colorProfile.undertone.label === "Frío" ? "Luz Fría" : "Balance Neutro";
-            const structure = morphology.winner === "curvy" ? "Volumen Armónico" : morphology.winner === "hourglass" ? "Cintura Definida" : "Estructura Balanceada";
+            const structureByMorph = {
+                hourglass: "Cintura Definida",
+                pear: "Base Equilibrada",
+                rectangle: "Estructura Limpia",
+                inverted_triangle: "Torso Protagonista",
+                oval: "Verticalidad Elegante"
+            };
+            const structure = structureByMorph[morphology.winner] || "Estructura Balanceada";
 
             return {
                 description: `Tus rasgos reflejan una combinacion ${morphology.label.toLowerCase()} con matices ${colorProfile.undertone.label.toLowerCase()}. Esta lectura sugiere accesorios y cortes que mantengan coherencia entre proporción y color personal.`,
@@ -514,28 +607,52 @@
                         "Faldas midi en línea A"
                     ]
                 },
-                balanced: {
+                pear: {
                     garments: [
-                        "Camisas rectas de estructura ligera",
-                        "Pantalón sastre de pierna media",
-                        "Chaquetas boxy con largo medio"
+                        "Blusas con hombro estructurado",
+                        "Pantalones rectos en tonos oscuros",
+                        "Chaquetas cropped con volumen superior"
                     ],
                     cuts: [
-                        "Cortes rectos y minimalistas",
-                        "Capas ligeras para profundidad",
-                        "Equilibrio entre ajuste y amplitud"
+                        "Escotes amplios para abrir torso",
+                        "Líneas limpias en cadera",
+                        "Capas cortas sobre cintura"
                     ]
                 },
-                curvy: {
+                rectangle: {
                     garments: [
-                        "Prendas con paneles verticales",
-                        "Pantalones de soporte con caída",
-                        "Tops estructurados en hombro"
+                        "Vestidos con pinzas y paneles",
+                        "Conjuntos monocromáticos con textura",
+                        "Blazers con entalle suave"
                     ],
                     cuts: [
-                        "Líneas diagonales estilizadas",
-                        "Cortes imperio y wrap suave",
-                        "Tejidos fluidos con cuerpo"
+                        "Cortes en cintura simulada",
+                        "Volumen medio en hombros y cadera",
+                        "Líneas rectas con puntos focales"
+                    ]
+                },
+                inverted_triangle: {
+                    garments: [
+                        "Faldas evasé y pantalón palazzo",
+                        "Tops de escote vertical limpio",
+                        "Chaquetas largas de caída suave"
+                    ],
+                    cuts: [
+                        "Volumen estratégico en cadera",
+                        "Hombro limpio sin exceso de estructura",
+                        "Líneas inferiores amplias"
+                    ]
+                },
+                oval: {
+                    garments: [
+                        "Vestidos cruzados de tela fluida",
+                        "Pantalones rectos de tiro medio",
+                        "Capas externas abiertas"
+                    ],
+                    cuts: [
+                        "Líneas verticales estilizadas",
+                        "Cortes imperio moderados",
+                        "Estructura suave en cintura"
                     ]
                 }
             };
@@ -547,12 +664,47 @@
                 "Verano": ["Rosa Empolvado", "Azul Acero", "Lavanda Suave"]
             };
 
-            const group = byMorph[morphology.winner] || byMorph.balanced;
+            const group = byMorph[morphology.winner] || byMorph.rectangle;
             return {
                 garments: group.garments,
                 cuts: group.cuts,
                 colors: bySeason[season.title] || ["Neutros cálidos", "Acentos suaves", "Contraste medio"]
             };
+        }
+
+        function applyMorphologyImage(morphologyKey) {
+            const image = document.getElementById("morphology-image");
+            const holder = document.getElementById("morphology-image-holder");
+            if (!image) return;
+
+            // Coloca tus archivos en esta carpeta con estos nombres.
+            const fileByMorph = {
+                hourglass: "../morfologias/reloj.png",
+                pear: "../morfologias/pera.png",
+                rectangle: "../morfologias/rectangular.png",
+                inverted_triangle: "../morfologias/triangulo-invertido.png",
+                oval: "../morfologias/ovalo.png"
+            };
+
+            image.onload = function handleLoadedImage() {
+                image.style.display = "block";
+                const note = holder ? holder.querySelector("[data-morphology-missing]") : null;
+                if (note) note.remove();
+            };
+
+            image.onerror = function handleMissingImage() {
+                image.style.display = "none";
+                if (holder && !holder.querySelector("[data-morphology-missing]")) {
+                    const note = document.createElement("p");
+                    note.setAttribute("data-morphology-missing", "true");
+                    note.className = "text-on-surface-variant text-sm text-center px-6";
+                    note.textContent = "Agrega las imágenes en /morfologias (reloj.png, pera.png, rectangular.png, triangulo-invertido.png, ovalo.png).";
+                    holder.appendChild(note);
+                }
+            };
+
+            image.style.display = "block";
+            image.src = fileByMorph[morphologyKey] || "../morfologias/reloj.png";
         }
 
         function renderBullets(containerId, items, bulletClass) {
@@ -619,21 +771,33 @@
             if (title) title.textContent = `Silueta ${morphology.label}`;
             if (description) description.textContent = morphology.description;
 
-            const maxScore = Math.max(morphology.score.hourglass, morphology.score.balanced, morphology.score.curvy);
+            const maxScore = Math.max(
+                morphology.score.hourglass,
+                morphology.score.pear,
+                morphology.score.rectangle,
+                morphology.score.inverted_triangle,
+                morphology.score.oval
+            );
             const normalizePct = (value) => Math.round((value / maxScore) * 100);
 
             const chipHourglass = document.getElementById("chip-hourglass");
-            const chipBalanced = document.getElementById("chip-balanced");
-            const chipCurvy = document.getElementById("chip-curvy");
+            const chipPear = document.getElementById("chip-pear");
+            const chipRectangle = document.getElementById("chip-rectangle");
+            const chipInverted = document.getElementById("chip-inverted");
+            const chipOval = document.getElementById("chip-oval");
 
             if (chipHourglass) chipHourglass.textContent = `Reloj de Arena ${normalizePct(morphology.score.hourglass)}%`;
-            if (chipBalanced) chipBalanced.textContent = `Equilibrada ${normalizePct(morphology.score.balanced)}%`;
-            if (chipCurvy) chipCurvy.textContent = `Curvilínea ${normalizePct(morphology.score.curvy)}%`;
+            if (chipPear) chipPear.textContent = `Pera ${normalizePct(morphology.score.pear)}%`;
+            if (chipRectangle) chipRectangle.textContent = `Rectangular ${normalizePct(morphology.score.rectangle)}%`;
+            if (chipInverted) chipInverted.textContent = `Triángulo Invertido ${normalizePct(morphology.score.inverted_triangle)}%`;
+            if (chipOval) chipOval.textContent = `Óvalo ${normalizePct(morphology.score.oval)}%`;
 
             const chipByType = {
                 hourglass: chipHourglass,
-                balanced: chipBalanced,
-                curvy: chipCurvy
+                pear: chipPear,
+                rectangle: chipRectangle,
+                inverted_triangle: chipInverted,
+                oval: chipOval
             };
 
             Object.values(chipByType).forEach((chip) => {
@@ -641,9 +805,15 @@
                 chip.classList.remove("bg-primary", "text-white");
             });
 
-            if (chipByType[morphology.winner]) {
-                chipByType[morphology.winner].classList.add("bg-primary", "text-white");
-            }
+            Object.entries(chipByType).forEach(([key, chip]) => {
+                if (!chip) return;
+                const pct = normalizePct(morphology.score[key]);
+                if (pct === 100 || key === morphology.winner) {
+                    chip.classList.add("bg-primary", "text-white");
+                }
+            });
+
+            applyMorphologyImage(morphology.winner);
 
             const skinTone = document.getElementById("skin-tone");
             const skinSwatch = document.getElementById("skin-swatch");
@@ -676,6 +846,13 @@
             renderBullets("reco-garments", recommendations.garments, "bg-primary");
             renderBullets("reco-cuts", recommendations.cuts, "bg-secondary");
             renderBullets("reco-colors", recommendations.colors, "bg-tertiary");
+
+            const goOutfitsBtn = document.getElementById("go-outfits-btn");
+            if (goOutfitsBtn) {
+                goOutfitsBtn.addEventListener("click", () => {
+                    window.top.location.hash = "outfits";
+                });
+            }
 
             store.resultsProfile = {
                 morphology: {
