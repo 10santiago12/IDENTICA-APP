@@ -679,11 +679,11 @@
 
             // Coloca tus archivos en esta carpeta con estos nombres.
             const fileByMorph = {
-                hourglass: "../morfologias/reloj.png",
-                pear: "../morfologias/pera.png",
-                rectangle: "../morfologias/rectangular.png",
-                inverted_triangle: "../morfologias/triangulo-invertido.png",
-                oval: "../morfologias/ovalo.png"
+                hourglass: "../morfologias/reloj.jpg",
+                pear: "../morfologias/pera.jpg",
+                rectangle: "../morfologias/rectangular.jpg",
+                inverted_triangle: "../morfologias/triangulo-invertido.jpg",
+                oval: "../morfologias/ovalo.jpg"
             };
 
             image.onload = function handleLoadedImage() {
@@ -698,13 +698,13 @@
                     const note = document.createElement("p");
                     note.setAttribute("data-morphology-missing", "true");
                     note.className = "text-on-surface-variant text-sm text-center px-6";
-                    note.textContent = "Agrega las imágenes en /morfologias (reloj.png, pera.png, rectangular.png, triangulo-invertido.png, ovalo.png).";
+                    note.textContent = "Agrega las imágenes en /morfologias (reloj.jpg, pera.jpg, rectangular.jpg, triangulo-invertido.jpg, ovalo.jpg).";
                     holder.appendChild(note);
                 }
             };
 
             image.style.display = "block";
-            image.src = fileByMorph[morphologyKey] || "../morfologias/reloj.png";
+            image.src = fileByMorph[morphologyKey] || "../morfologias/reloj.jpg";
         }
 
         function renderBullets(containerId, items, bulletClass) {
