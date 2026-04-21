@@ -112,8 +112,8 @@
             </h1>
 <div class="bg-surface-container-low rounded-xl p-6 flex flex-col md:flex-row md:items-center gap-6 relative overflow-hidden">
 <div class="z-10 flex-1">
-<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                        Basado en tu silueta <span class="text-primary font-bold">Reloj de Arena</span> y colorimetría <span class="text-primary font-bold">Otoño</span>, hemos seleccionado estos 3 looks para ti.
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed" id="outfits-hero-text">
+            Basado en tu silueta <span class="text-primary font-bold" id="hero-morph">Reloj de Arena</span> y colorimetría <span class="text-primary font-bold" id="hero-season">Otoño</span>, hemos seleccionado estos 3 looks para ti.
                     </p>
 </div>
 <div class="hidden md:block absolute -right-4 -bottom-4 opacity-10">
@@ -126,14 +126,19 @@
 <!-- Outfit 1 -->
 <article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
 <div class="relative aspect-[3/4] overflow-hidden">
-<img alt="Elegancia Otoñal" class="w-full h-full object-cover" data-alt="woman wearing high-waisted wide-leg camel trousers and a cream silk blouse in soft natural afternoon light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX7jheec1li9gXy-TfjaOrTzi4bWdZtrBuisouqE9GCYGahaHtEjXP_Pf88oD3hDT8YzjPiz_RvZ5ezVSi88eB5aLa-BVJZc6PgokX3XP7vCcW88Cz55rSJPGpftu0ofIbJDrsTfxMHbZNDsKI33i3hfJb0CTKZG8GyR_bevQS865_z_nj3V96mkmqVJ_JahGgoSPSHE0BvNYt9sjc0E6wZFWwY8IIHp_s4MWtCnQ_ny6punyauLmvXXSgETAeqxBvFQT6Nex8s8k"/>
-<div class="absolute top-4 right-4 bg-tertiary-container/90 text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+<div class="w-full h-full bg-surface-container-low flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-7xl" style="font-variation-settings: 'FILL' 1;">checkroom</span>
+<p class="text-xs tracking-widest uppercase text-on-surface-variant mt-3">Look personalizado</p>
+</div>
+</div>
+<div class="absolute top-4 right-4 bg-tertiary-container/90 text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase" id="outfit-badge">
                         Ideal para ti
                     </div>
 </div>
 <div class="p-6 flex flex-col flex-grow">
-<h3 class="font-headline text-xl font-bold text-on-surface mb-3">Elegancia Otoñal</h3>
-<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-3" id="outfit1-title">Elegancia Otoñal</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow" id="outfit1-description">
                         Resalta tu cintura y armoniza con tu tono de piel cálido mediante tonos tierra y texturas suaves.
                     </p>
 <button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
@@ -144,11 +149,16 @@
 <!-- Outfit 2 -->
 <article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
 <div class="relative aspect-[3/4] overflow-hidden">
-<img alt="Sofisticación Urbana" class="w-full h-full object-cover" data-alt="fashion model in a tailored terracotta blazer and dark denim jeans posing in a modern architectural setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxmo-Ri2yZlTc8slBZAYKt6ILgHD8MJpom-Sq4v2wnAaSTCBbV48hSuSkaXZtsS8dYfOxr0qBvm5UJSJqHFJxFcBTckudC3kiPs6Ape1tgEWhxF3A_nT4qGrLP4ObzjR-F_UagHcWeUH05yfxTNZ1qd7VShgxsLmriO7_MLG-ztatlMsL6GA9g6M-P0vsYZ6sOyDqIYORiTQAjQerrKkBtYRuk432qjX3SIYB4j9HHXuCUMSaRBELJc_DxxeNK3zfeKEIoui9LicQ"/>
+<div class="w-full h-full bg-surface-container-low flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-7xl" style="font-variation-settings: 'FILL' 1;">style</span>
+<p class="text-xs tracking-widest uppercase text-on-surface-variant mt-3">Combinación sugerida</p>
+</div>
+</div>
 </div>
 <div class="p-6 flex flex-col flex-grow">
-<h3 class="font-headline text-xl font-bold text-on-surface mb-3">Sofisticación Urbana</h3>
-<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-3" id="outfit2-title">Sofisticación Urbana</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow" id="outfit2-description">
                         Estructura tus hombros manteniendo el foco en tu silueta central con este blazer de corte entallado.
                     </p>
 <button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
@@ -159,11 +169,16 @@
 <!-- Outfit 3 -->
 <article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 duration-300">
 <div class="relative aspect-[3/4] overflow-hidden">
-<img alt="Balance Perfecto" class="w-full h-full object-cover" data-alt="woman wearing a midi wrap dress in a deep forest green color standing in a sunlit garden with editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0K3YgqrxBjLCOkRLa0sLDabSxwiuA-Nm8WCP40p6GtE_cBvOfFDnbPGCQR4Mt8xjHm2bS5-vM5ShvT9Y6K6twNHGNu0IemTAMXJW4Ul58R7isMvIqsoqOsALBkWY0JwcPt4Mw5tjhWfiDg2dbFHN50rw7Pw4546OSVC5V6R7s8RiV58_OzI4qn5sYUS3kmnlw3DhXenDOmraQ2JVEyBimBp0GY8HDvbJ4SQHf10akAKHXQEVlUv4BXjULwh7V-folzv3ieY0JNg8"/>
+<div class="w-full h-full bg-surface-container-low flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-7xl" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<p class="text-xs tracking-widest uppercase text-on-surface-variant mt-3">Selección atelier</p>
+</div>
+</div>
 </div>
 <div class="p-6 flex flex-col flex-grow">
-<h3 class="font-headline text-xl font-bold text-on-surface mb-3">Balance Perfecto</h3>
-<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-3" id="outfit3-title">Balance Perfecto</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed flex-grow" id="outfit3-description">
                         El corte cruzado enfatiza tus curvas naturales mientras el verde oliva realza la calidez de tu mirada.
                     </p>
 <button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-wide transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-primary/20">
@@ -179,30 +194,128 @@
 </div>
 <div>
 <h4 class="font-headline font-bold text-on-tertiary-fixed mb-1">Tip de Estilo AI</h4>
-<p class="text-on-tertiary-fixed-variant leading-snug">
+<p class="text-on-tertiary-fixed-variant leading-snug" id="ai-tip-text">
                     Para tu silueta Reloj de Arena, prioriza siempre las telas con caída que sigan la línea de tu cuerpo sin ocultarlo. El cinturón es tu mejor accesorio este otoño.
                 </p>
 </div>
 </section>
 </main>
 <!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 bg-[#faf9f8]/90 dark:bg-[#1a1c1c]/90 backdrop-blur-2xl shadow-[0px_-4px_24px_rgba(88,65,66,0.04)] rounded-t-3xl">
-<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-60 hover:bg-[#f4f3f2] dark:hover:bg-[#2d2d2d] rounded-full transition-all px-4 py-1">
-<span class="material-symbols-outlined mb-1" data-icon="brush">brush</span>
-<span class="font-['Manrope'] text-[10px] font-medium tracking-[0.1em] uppercase">Studio</span>
-</div>
-<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-60 hover:bg-[#f4f3f2] dark:hover:bg-[#2d2d2d] rounded-full transition-all px-4 py-1">
-<span class="material-symbols-outlined mb-1" data-icon="analytics">analytics</span>
-<span class="font-['Manrope'] text-[10px] font-medium tracking-[0.1em] uppercase">Analyze</span>
-</div>
-<!-- Active Tab: Wardrobe -->
-<div class="flex flex-col items-center justify-center bg-[#c2828f] text-white rounded-full px-5 py-2 scale-105 transition-all">
-<span class="material-symbols-outlined mb-1" data-icon="checkroom" style="font-variation-settings: 'FILL' 1;">checkroom</span>
-<span class="font-['Manrope'] text-[10px] font-medium tracking-[0.1em] uppercase">Wardrobe</span>
-</div>
-<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-60 hover:bg-[#f4f3f2] dark:hover:bg-[#2d2d2d] rounded-full transition-all px-4 py-1">
-<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
-<span class="font-['Manrope'] text-[10px] font-medium tracking-[0.1em] uppercase">Profile</span>
-</div>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#faf9f8]/90 dark:bg-[#1a1c1c]/90 backdrop-blur-2xl rounded-t-[2rem] shadow-[0px_-8px_24px_rgba(88,65,66,0.04)]" id="bottom-nav">
+<button class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-transform" data-route="inicio" type="button">
+<span class="material-symbols-outlined mb-1">auto_awesome</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Estudio</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-transform" data-route="analisis" type="button">
+<span class="material-symbols-outlined mb-1">photo_camera</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Analisis</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#c2828f] text-white rounded-full px-6 py-2" data-route="outfits" type="button">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">apparel</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Armario</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-transform" data-route="perfil" type="button">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Perfil</span>
+</button>
 </nav>
+<script>
+  (function () {
+    function getSessionStore() {
+      if (!window.top.__identicaSessionStore) {
+        window.top.__identicaSessionStore = {};
+      }
+      return window.top.__identicaSessionStore;
+    }
+
+    function formatFitLabel(fit) {
+      const map = {
+        adjusted: "ajustado",
+        regular: "regular",
+        oversize: "oversize"
+      };
+      return map[fit] || "regular";
+    }
+
+    function setText(id, value) {
+      const node = document.getElementById(id);
+      if (node) node.textContent = value;
+    }
+
+    function setHero(morphology, season) {
+      setText("hero-morph", morphology);
+      setText("hero-season", season);
+    }
+
+    function applyOutfitContent(recommendations, season, morphologyLabel) {
+      const titles = [
+        "Look recomendado 1",
+        "Look recomendado 2",
+        "Look recomendado 3"
+      ];
+
+      const fallbackDescriptions = [
+        "Combinación versátil de uso diario, enfocada en equilibrio visual y color personal.",
+        "Propuesta editorial con estructura en puntos clave para potenciar tu silueta.",
+        "Look de impacto con contraste controlado y acabados que elevan tu presencia."
+      ];
+
+      const garmentText = recommendations && recommendations.garments ? recommendations.garments : [];
+      const cutsText = recommendations && recommendations.cuts ? recommendations.cuts : [];
+      const colorText = recommendations && recommendations.colors ? recommendations.colors : [];
+
+      setText("outfit1-title", titles[0]);
+      setText("outfit2-title", titles[1]);
+      setText("outfit3-title", titles[2]);
+
+      setText("outfit1-description", garmentText[0] ? `${garmentText[0]}. Paleta sugerida: ${colorText[0] || "Neutros cálidos"}.` : fallbackDescriptions[0]);
+      setText("outfit2-description", cutsText[1] ? `${cutsText[1]}. Enfatiza proporción y armonía general del look.` : fallbackDescriptions[1]);
+      setText("outfit3-description", garmentText[2] ? `${garmentText[2]}. Cierra el look con acento ${colorText[2] || "editorial"}.` : fallbackDescriptions[2]);
+    }
+
+    function applyTip(data) {
+      const morphology = data.morphology || { label: "Equilibrada" };
+      const season = data.season || { title: "Otoño" };
+      const fit = data.profileSnapshot ? data.profileSnapshot.fit : "regular";
+      const fitLabel = formatFitLabel(fit);
+
+      const tip = `Para tu silueta ${morphology.label}, prioriza prendas de ajuste ${fitLabel} con foco en ${season.title.toLowerCase()}. Mantén una base neutra y sube contraste con accesorios para reforzar identidad visual.`;
+      setText("ai-tip-text", tip);
+      setText("outfit-badge", `Ideal para ${morphology.label}`);
+    }
+
+    function initBottomNav(activeRoute) {
+      const nav = document.getElementById("bottom-nav");
+      if (!nav) return;
+      const items = nav.querySelectorAll("[data-route]");
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          const route = item.getAttribute("data-route");
+          if (route) window.top.location.hash = route;
+        });
+
+        const route = item.getAttribute("data-route");
+        if (route === activeRoute) {
+          item.classList.add("bg-[#c2828f]", "text-white", "rounded-full", "px-6", "py-2");
+          item.classList.remove("opacity-70");
+        }
+      });
+    }
+
+    function init() {
+      const store = getSessionStore();
+      const data = store.resultsProfile || {};
+
+      const morphologyLabel = data.morphology ? data.morphology.label : "Reloj de Arena";
+      const seasonTitle = data.season ? data.season.title : "Otoño";
+
+      setHero(morphologyLabel, seasonTitle);
+      applyOutfitContent(data.recommendations, seasonTitle, morphologyLabel);
+      applyTip(data);
+      initBottomNav("outfits");
+    }
+
+    init();
+  })();
+</script>
 </body></html>

@@ -133,12 +133,12 @@
 <div class="absolute -right-12 -top-12 w-64 h-64 bg-primary-fixed opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
 <div class="relative z-10 w-full md:w-1/2">
 <span class="text-tertiary font-bold text-xs tracking-widest uppercase mb-4 block" style="">Morfología</span>
-<h3 class="text-3xl font-bold mb-4" style="">Silueta Reloj de Arena</h3>
-<p class="text-on-surface-variant leading-relaxed mb-6" style="">Tus hombros y caderas están equilibrados, con una cintura claramente definida. Esta proporción armoniosa permite un estilismo versátil que realza tus curvas naturales.</p>
+<h3 class="text-3xl font-bold mb-4" id="morphology-title" style="">Silueta Reloj de Arena</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6" id="morphology-description" style="">Tus hombros y caderas están equilibrados, con una cintura claramente definida. Esta proporción armoniosa permite un estilismo versátil que realza tus curvas naturales.</p>
 <div class="flex gap-2">
-<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" style="">Reloj de Arena</span>
-<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" style="">Equilibrada</span>
-<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" style="">Curvilínea</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-hourglass" style="">Reloj de Arena</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-balanced" style="">Equilibrada</span>
+<span class="bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant" id="chip-curvy" style="">Curvilínea</span>
 </div>
 </div>
 <div class="w-full md:w-1/2 flex justify-center relative">
@@ -159,19 +159,19 @@
 <div class="space-y-4">
 <div class="flex justify-between items-center border-b border-on-tertiary-container/10 pb-3">
 <span class="text-sm opacity-80" style="">Altura</span>
-<span class="font-bold" style="">168 cm</span>
+<span class="font-bold" id="profile-height" style="">168 cm</span>
 </div>
 <div class="flex justify-between items-center border-b border-on-tertiary-container/10 pb-3">
 <span class="text-sm opacity-80" style="">Peso</span>
-<span class="font-bold" style="">62 kg</span>
+<span class="font-bold" id="profile-weight" style="">62 kg</span>
 </div>
 <div class="flex justify-between items-center border-b border-on-tertiary-container/10 pb-3">
 <span class="text-sm opacity-80" style="">Talla Estándar</span>
-<span class="font-bold" style="">Mediana / 38</span>
+<span class="font-bold" id="profile-size" style="">Mediana / 38</span>
 </div>
 <div class="flex justify-between items-center">
 <span class="text-sm opacity-80" style="">Ajuste Preferido</span>
-<span class="font-bold" style="">Entallado</span>
+<span class="font-bold" id="profile-fit" style="">Entallado</span>
 </div>
 </div>
 </div>
@@ -188,23 +188,23 @@
 <div class="grid grid-cols-2 gap-4">
 <div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center">
 <span class="text-[10px] uppercase tracking-tighter text-on-surface-variant mb-2" style="">Tono de Piel</span>
-<div class="w-10 h-10 rounded-full bg-[#E8BE96] mb-2 shadow-sm"></div>
-<span class="font-bold text-sm" style="">Medio</span>
+<div class="w-10 h-10 rounded-full mb-2 shadow-sm" id="skin-swatch" style="background:#E8BE96;"></div>
+<span class="font-bold text-sm" id="skin-tone" style="">Medio</span>
 </div>
 <div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center">
 <span class="text-[10px] uppercase tracking-tighter text-on-surface-variant mb-2" style="">Subtono</span>
-<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#FFD700] to-[#FFA500] mb-2 shadow-sm"></div>
-<span class="font-bold text-sm" style="">Cálido</span>
+<div class="w-10 h-10 rounded-full mb-2 shadow-sm" id="undertone-swatch" style="background:linear-gradient(45deg,#FFD700,#FFA500);"></div>
+<span class="font-bold text-sm" id="undertone-label" style="">Cálido</span>
 </div>
 <div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center">
 <span class="text-[10px] uppercase tracking-tighter text-on-surface-variant mb-2" style="">Color de Ojos</span>
-<div class="w-10 h-10 rounded-full bg-[#8E7618] mb-2 shadow-sm"></div>
-<span class="font-bold text-sm" style="">Avellana</span>
+<div class="w-10 h-10 rounded-full mb-2 shadow-sm" id="eyes-swatch" style="background:#8E7618;"></div>
+<span class="font-bold text-sm" id="eyes-label" style="">Avellana</span>
 </div>
 <div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center">
 <span class="text-[10px] uppercase tracking-tighter text-on-surface-variant mb-2" style="">Color de Cabello</span>
-<div class="w-10 h-10 rounded-full bg-[#3D2314] mb-2 shadow-sm"></div>
-<span class="font-bold text-sm" style="">Castaño Oscuro</span>
+<div class="w-10 h-10 rounded-full mb-2 shadow-sm" id="hair-swatch" style="background:#3D2314;"></div>
+<span class="font-bold text-sm" id="hair-label" style="">Castaño Oscuro</span>
 </div>
 </div>
 </div>
@@ -213,10 +213,10 @@
 <div class="flex flex-col h-full justify-between relative z-10">
 <div>
 <span class="text-secondary font-bold text-xs tracking-widest uppercase mb-2 block" style="">Cromatografía</span>
-<h3 class="text-4xl font-extrabold mb-4" style="">Otoño</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed mb-6" style="">Tus rasgos armonizan perfectamente con tonos terrosos, ricos y cálidos. Piensa en paisajes de atardecer y mercados de especias.</p>
+<h3 class="text-4xl font-extrabold mb-4" id="season-title" style="">Otoño</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6" id="season-description" style="">Tus rasgos armonizan perfectamente con tonos terrosos, ricos y cálidos. Piensa en paisajes de atardecer y mercados de especias.</p>
 </div>
-<div class="flex gap-2 w-full overflow-x-auto hide-scrollbar pb-2">
+<div class="flex gap-2 w-full overflow-x-auto hide-scrollbar pb-2" id="season-palette">
 <div class="min-w-[48px] h-12 rounded-xl bg-[#a43c12] shadow-sm"></div>
 <div class="min-w-[48px] h-12 rounded-xl bg-[#864e5a] shadow-sm"></div>
 <div class="min-w-[48px] h-12 rounded-xl bg-[#735c00] shadow-sm"></div>
@@ -236,8 +236,8 @@
 </div>
 <div class="w-full md:w-2/3">
 <h3 class="text-2xl font-bold mb-4" style="">Armonía Facial y Rasgos</h3>
-<p class="text-on-surface-variant text-lg leading-relaxed mb-4" style="">Tu estructura facial presenta un peso visual alto con proporciones equilibradas. Los ojos avellana proporcionan un contraste cautivador contra el tono de piel cálido, sugiriendo que los accesorios en oro metálico y cobre realzarán tu luminosidad natural.</p>
-<div class="flex flex-wrap gap-4">
+<p class="text-on-surface-variant text-lg leading-relaxed mb-4" id="facial-description" style="">Tu estructura facial presenta un peso visual alto con proporciones equilibradas. Los ojos avellana proporcionan un contraste cautivador contra el tono de piel cálido, sugiriendo que los accesorios en oro metálico y cobre realzarán tu luminosidad natural.</p>
+<div class="flex flex-wrap gap-4" id="facial-badges">
 <div class="flex items-center gap-2 text-primary font-bold">
 <span class="material-symbols-outlined text-sm" style="">check_circle</span>
 <span class="text-sm" style="">Contraste Alto</span>
@@ -263,7 +263,7 @@
 <span class="material-symbols-outlined" style="">apparel</span>
 </div>
 <h4 class="text-xl font-bold mb-3" style="">Tipos de Prenda</h4>
-<ul class="space-y-3 text-on-surface-variant text-sm">
+<ul class="space-y-3 text-on-surface-variant text-sm" id="reco-garments">
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Vestidos tipo wrap para marcar cintura</li>
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Pantalones estructurados de tiro alto</li>
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Blazers entallados con ajuste en cintura</li>
@@ -275,7 +275,7 @@
 <span class="material-symbols-outlined" style="">content_cut</span>
 </div>
 <h4 class="text-xl font-bold mb-3" style="">Cortes y Siluetas</h4>
-<ul class="space-y-3 text-on-surface-variant text-sm">
+<ul class="space-y-3 text-on-surface-variant text-sm" id="reco-cuts">
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Escotes en V para alargar el torso</li>
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Faldas línea A para movimiento fluido</li>
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Tops peplum para definir curvas</li>
@@ -287,7 +287,7 @@
 <span class="material-symbols-outlined" style="">format_color_fill</span>
 </div>
 <h4 class="text-xl font-bold mb-3" style="">Colores Distintivos</h4>
-<ul class="space-y-3 text-on-surface-variant text-sm">
+<ul class="space-y-3 text-on-surface-variant text-sm" id="reco-colors">
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Terracota y Naranja Quemado</li>
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Oliva Profundo y Verde Bosque</li>
 <li class="flex items-center gap-2" style=""><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Crema Rico y Oro Cálido</li>
@@ -324,4 +324,381 @@
 <span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase" style="">Perfil</span>
 </a>
 </nav>
+<script>
+    (function () {
+        function getSessionStore() {
+            if (!window.top.__identicaSessionStore) {
+                window.top.__identicaSessionStore = {};
+            }
+            return window.top.__identicaSessionStore;
+        }
+
+        function hashSeed(value) {
+            const text = String(value || "identica");
+            let hash = 2166136261;
+            for (let i = 0; i < text.length; i += 1) {
+                hash ^= text.charCodeAt(i);
+                hash = Math.imul(hash, 16777619);
+            }
+            return hash >>> 0;
+        }
+
+        function seededRandom(seed) {
+            let state = seed >>> 0;
+            return function next() {
+                state = (state + 0x6D2B79F5) | 0;
+                let t = Math.imul(state ^ (state >>> 15), 1 | state);
+                t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
+                return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+        }
+
+        function formatFitLabel(fit) {
+            const map = {
+                adjusted: "Ajustado",
+                regular: "Regular",
+                oversize: "Oversize"
+            };
+            return map[fit] || "Regular";
+        }
+
+        function parseNumber(value, fallback) {
+            const parsed = Number(String(value || "").replace(",", "."));
+            return Number.isFinite(parsed) ? parsed : fallback;
+        }
+
+        function buildMorphology(profile) {
+            const height = parseNumber(profile.height, 165);
+            const weight = parseNumber(profile.weight, 60);
+            const fit = profile.fit || "regular";
+            const bmi = weight / Math.pow(height / 100, 2);
+
+            const score = {
+                hourglass: 45,
+                balanced: 45,
+                curvy: 45
+            };
+
+            if (fit === "adjusted") score.hourglass += 18;
+            if (fit === "regular") score.balanced += 16;
+            if (fit === "oversize") score.curvy += 12;
+
+            if (bmi >= 20 && bmi <= 27) score.hourglass += 10;
+            if (bmi >= 18 && bmi <= 24.9) score.balanced += 12;
+            if (bmi >= 24) score.curvy += 14;
+
+            const top = Object.entries(score).sort((a, b) => b[1] - a[1]);
+            const winner = top[0][0];
+
+            const labels = {
+                hourglass: "Reloj de Arena",
+                balanced: "Equilibrada",
+                curvy: "Curvilínea"
+            };
+
+            const descriptions = {
+                hourglass: "Tus proporciones muestran equilibrio entre hombros y cadera, con énfasis natural en la cintura. Te favorecen prendas que definan la silueta.",
+                balanced: "Tu estructura corporal se percibe armónica y proporcional. Te favorecen cortes limpios y combinaciones versátiles con volumen moderado.",
+                curvy: "Tu silueta proyecta volumen orgánico y presencia. Te favorecen líneas estructuradas y telas con caída que acompañen el movimiento del cuerpo."
+            };
+
+            return {
+                winner,
+                label: labels[winner],
+                description: descriptions[winner],
+                score
+            };
+        }
+
+        function buildColorProfile(profile, random) {
+            const skinPalette = [
+                { label: "Claro", swatch: "#F2D6C8" },
+                { label: "Medio", swatch: "#E8BE96" },
+                { label: "Trigueño", swatch: "#C58A63" },
+                { label: "Profundo", swatch: "#8A5A3B" }
+            ];
+
+            const eyesPalette = [
+                { label: "Miel", swatch: "#A9772F" },
+                { label: "Avellana", swatch: "#8E7618" },
+                { label: "Café", swatch: "#5A3C2E" },
+                { label: "Verde Oliva", swatch: "#65714E" }
+            ];
+
+            const hairPalette = [
+                { label: "Castaño Oscuro", swatch: "#3D2314" },
+                { label: "Castaño Medio", swatch: "#5E3B27" },
+                { label: "Negro Suave", swatch: "#2B1F1A" },
+                { label: "Castaño Claro", swatch: "#7A5439" }
+            ];
+
+            const undertones = [
+                { label: "Cálido", swatch: "linear-gradient(45deg,#FFD770,#F59E0B)" },
+                { label: "Neutro", swatch: "linear-gradient(45deg,#E5D8C8,#C6B7A5)" },
+                { label: "Frío", swatch: "linear-gradient(45deg,#D4C9FF,#99B7FF)" }
+            ];
+
+            const h = parseNumber(profile.height, 165);
+            const w = parseNumber(profile.weight, 60);
+            const seedIndex = Math.floor(random() * 1000);
+
+            const skin = skinPalette[Math.abs(Math.round((h + w + seedIndex) % skinPalette.length))];
+            const eyes = eyesPalette[Math.abs(Math.round((w + seedIndex) % eyesPalette.length))];
+            const hair = hairPalette[Math.abs(Math.round((h + seedIndex) % hairPalette.length))];
+            const undertone = undertones[Math.abs(Math.round((h * w + seedIndex) % undertones.length))];
+
+            return { skin, eyes, hair, undertone };
+        }
+
+        function buildSeason(undertoneLabel, random) {
+            const warmSeasons = [
+                {
+                    title: "Otoño",
+                    description: "Tu perfil conecta con tonos tierra, especias y profundidad cálida. Los contrastes medios-altos realzan tu presencia visual.",
+                    palette: ["#A43C12", "#864E5A", "#735C00", "#C2828F", "#E9C349", "#574500", "#360C19"]
+                },
+                {
+                    title: "Primavera",
+                    description: "Tu armonía cromática favorece tonos luminosos y cálidos con energía vibrante. Funciona mejor una paleta clara y fresca.",
+                    palette: ["#F28C28", "#FFB347", "#F4D35E", "#9BC53D", "#5BC0EB", "#F7A072", "#E07A5F"]
+                }
+            ];
+
+            const coolSeasons = [
+                {
+                    title: "Invierno",
+                    description: "Tu base cromática responde bien a contraste marcado y tonos profundos. Los colores fríos y nítidos elevan tus rasgos.",
+                    palette: ["#1D3557", "#457B9D", "#A8DADC", "#2A9D8F", "#6D597A", "#264653", "#0B132B"]
+                },
+                {
+                    title: "Verano",
+                    description: "Tu lectura visual es suave y equilibrada. Los tonos fríos atenuados y pastel refinan la armonía del rostro.",
+                    palette: ["#8E9AAF", "#CBC0D3", "#EFD3D7", "#B8E0D2", "#A4C3B2", "#90A8C3", "#6C91BF"]
+                }
+            ];
+
+            if (undertoneLabel === "Cálido") {
+                return warmSeasons[Math.floor(random() * warmSeasons.length)];
+            }
+
+            if (undertoneLabel === "Frío") {
+                return coolSeasons[Math.floor(random() * coolSeasons.length)];
+            }
+
+            const all = warmSeasons.concat(coolSeasons);
+            return all[Math.floor(random() * all.length)];
+        }
+
+        function buildFacialCopy(colorProfile, morphology) {
+            const contrast = colorProfile.eyes.label === "Café" || colorProfile.hair.label.includes("Oscuro") ? "Contraste Alto" : "Contraste Medio";
+            const warmth = colorProfile.undertone.label === "Cálido" ? "Brillo Cálido" : colorProfile.undertone.label === "Frío" ? "Luz Fría" : "Balance Neutro";
+            const structure = morphology.winner === "curvy" ? "Volumen Armónico" : morphology.winner === "hourglass" ? "Cintura Definida" : "Estructura Balanceada";
+
+            return {
+                description: `Tus rasgos reflejan una combinacion ${morphology.label.toLowerCase()} con matices ${colorProfile.undertone.label.toLowerCase()}. Esta lectura sugiere accesorios y cortes que mantengan coherencia entre proporción y color personal.`,
+                badges: [contrast, warmth, structure]
+            };
+        }
+
+        function buildRecommendations(morphology, season) {
+            const byMorph = {
+                hourglass: {
+                    garments: [
+                        "Vestidos wrap para marcar cintura",
+                        "Pantalones tiro alto con pinzas suaves",
+                        "Blazers entallados con hombro limpio"
+                    ],
+                    cuts: [
+                        "Escotes en V o corazón",
+                        "Líneas ceñidas con caída ligera",
+                        "Faldas midi en línea A"
+                    ]
+                },
+                balanced: {
+                    garments: [
+                        "Camisas rectas de estructura ligera",
+                        "Pantalón sastre de pierna media",
+                        "Chaquetas boxy con largo medio"
+                    ],
+                    cuts: [
+                        "Cortes rectos y minimalistas",
+                        "Capas ligeras para profundidad",
+                        "Equilibrio entre ajuste y amplitud"
+                    ]
+                },
+                curvy: {
+                    garments: [
+                        "Prendas con paneles verticales",
+                        "Pantalones de soporte con caída",
+                        "Tops estructurados en hombro"
+                    ],
+                    cuts: [
+                        "Líneas diagonales estilizadas",
+                        "Cortes imperio y wrap suave",
+                        "Tejidos fluidos con cuerpo"
+                    ]
+                }
+            };
+
+            const bySeason = {
+                "Otoño": ["Terracota", "Oliva Profundo", "Camel Dorado"],
+                "Primavera": ["Coral Vivo", "Verde Brote", "Durazno Luminoso"],
+                "Invierno": ["Azul Noche", "Borgoña", "Esmeralda Profundo"],
+                "Verano": ["Rosa Empolvado", "Azul Acero", "Lavanda Suave"]
+            };
+
+            const group = byMorph[morphology.winner] || byMorph.balanced;
+            return {
+                garments: group.garments,
+                cuts: group.cuts,
+                colors: bySeason[season.title] || ["Neutros cálidos", "Acentos suaves", "Contraste medio"]
+            };
+        }
+
+        function renderBullets(containerId, items, bulletClass) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = items
+                .map((item) => `<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full ${bulletClass}"></span>${item}</li>`)
+                .join("");
+        }
+
+        function renderFacialBadges(items) {
+            const holder = document.getElementById("facial-badges");
+            if (!holder) return;
+            holder.innerHTML = items
+                .map((item) => `<div class="flex items-center gap-2 text-primary font-bold"><span class="material-symbols-outlined text-sm">check_circle</span><span class="text-sm">${item}</span></div>`)
+                .join("");
+        }
+
+        function renderPalette(colors) {
+            const holder = document.getElementById("season-palette");
+            if (!holder) return;
+            holder.innerHTML = colors
+                .map((color) => `<div class="min-w-[48px] h-12 rounded-xl shadow-sm" style="background:${color};"></div>`)
+                .join("");
+        }
+
+        function init() {
+            const store = getSessionStore();
+            const profile = store.profile || {};
+            const upload = store.upload || {};
+            const analysis = store.analysis || {};
+
+            const seedBase = JSON.stringify({
+                height: profile.height || "",
+                weight: profile.weight || "",
+                shirt: profile.shirt || "",
+                pants: profile.pants || "",
+                fit: profile.fit || "",
+                source: upload.source || "",
+                fileName: upload.fileName || "",
+                canthal: analysis.canthalAngle || "",
+                pigment: analysis.pigmentIndex || ""
+            });
+
+            const random = seededRandom(hashSeed(seedBase));
+            const morphology = buildMorphology(profile);
+            const colorProfile = buildColorProfile(profile, random);
+            const season = buildSeason(colorProfile.undertone.label, random);
+            const facial = buildFacialCopy(colorProfile, morphology);
+            const recommendations = buildRecommendations(morphology, season);
+
+            const heightNode = document.getElementById("profile-height");
+            const weightNode = document.getElementById("profile-weight");
+            const sizeNode = document.getElementById("profile-size");
+            const fitNode = document.getElementById("profile-fit");
+
+            if (heightNode) heightNode.textContent = `${profile.height || "--"} cm`;
+            if (weightNode) weightNode.textContent = `${profile.weight || "--"} kg`;
+            if (sizeNode) sizeNode.textContent = `${profile.shirt || "--"} / ${profile.pants || "--"}`;
+            if (fitNode) fitNode.textContent = formatFitLabel(profile.fit);
+
+            const title = document.getElementById("morphology-title");
+            const description = document.getElementById("morphology-description");
+            if (title) title.textContent = `Silueta ${morphology.label}`;
+            if (description) description.textContent = morphology.description;
+
+            const maxScore = Math.max(morphology.score.hourglass, morphology.score.balanced, morphology.score.curvy);
+            const normalizePct = (value) => Math.round((value / maxScore) * 100);
+
+            const chipHourglass = document.getElementById("chip-hourglass");
+            const chipBalanced = document.getElementById("chip-balanced");
+            const chipCurvy = document.getElementById("chip-curvy");
+
+            if (chipHourglass) chipHourglass.textContent = `Reloj de Arena ${normalizePct(morphology.score.hourglass)}%`;
+            if (chipBalanced) chipBalanced.textContent = `Equilibrada ${normalizePct(morphology.score.balanced)}%`;
+            if (chipCurvy) chipCurvy.textContent = `Curvilínea ${normalizePct(morphology.score.curvy)}%`;
+
+            const chipByType = {
+                hourglass: chipHourglass,
+                balanced: chipBalanced,
+                curvy: chipCurvy
+            };
+
+            Object.values(chipByType).forEach((chip) => {
+                if (!chip) return;
+                chip.classList.remove("bg-primary", "text-white");
+            });
+
+            if (chipByType[morphology.winner]) {
+                chipByType[morphology.winner].classList.add("bg-primary", "text-white");
+            }
+
+            const skinTone = document.getElementById("skin-tone");
+            const skinSwatch = document.getElementById("skin-swatch");
+            const undertoneLabel = document.getElementById("undertone-label");
+            const undertoneSwatch = document.getElementById("undertone-swatch");
+            const eyesLabel = document.getElementById("eyes-label");
+            const eyesSwatch = document.getElementById("eyes-swatch");
+            const hairLabel = document.getElementById("hair-label");
+            const hairSwatch = document.getElementById("hair-swatch");
+
+            if (skinTone) skinTone.textContent = colorProfile.skin.label;
+            if (skinSwatch) skinSwatch.style.background = colorProfile.skin.swatch;
+            if (undertoneLabel) undertoneLabel.textContent = colorProfile.undertone.label;
+            if (undertoneSwatch) undertoneSwatch.style.background = colorProfile.undertone.swatch;
+            if (eyesLabel) eyesLabel.textContent = colorProfile.eyes.label;
+            if (eyesSwatch) eyesSwatch.style.background = colorProfile.eyes.swatch;
+            if (hairLabel) hairLabel.textContent = colorProfile.hair.label;
+            if (hairSwatch) hairSwatch.style.background = colorProfile.hair.swatch;
+
+            const seasonTitle = document.getElementById("season-title");
+            const seasonDescription = document.getElementById("season-description");
+            if (seasonTitle) seasonTitle.textContent = season.title;
+            if (seasonDescription) seasonDescription.textContent = season.description;
+            renderPalette(season.palette);
+
+            const facialDescription = document.getElementById("facial-description");
+            if (facialDescription) facialDescription.textContent = facial.description;
+            renderFacialBadges(facial.badges);
+
+            renderBullets("reco-garments", recommendations.garments, "bg-primary");
+            renderBullets("reco-cuts", recommendations.cuts, "bg-secondary");
+            renderBullets("reco-colors", recommendations.colors, "bg-tertiary");
+
+            store.resultsProfile = {
+                morphology: {
+                    key: morphology.winner,
+                    label: morphology.label,
+                    description: morphology.description,
+                    score: morphology.score
+                },
+                season,
+                colorProfile,
+                facial,
+                recommendations,
+                profileSnapshot: {
+                    height: profile.height || "",
+                    weight: profile.weight || "",
+                    shirt: profile.shirt || "",
+                    pants: profile.pants || "",
+                    fit: profile.fit || "regular"
+                }
+            };
+        }
+
+        init();
+    })();
+</script>
 </body></html>

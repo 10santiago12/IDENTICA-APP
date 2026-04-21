@@ -197,23 +197,23 @@
 </section>
 </main>
 <!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#faf9f8]/90 dark:bg-[#1a1c1c]/90 backdrop-blur-2xl rounded-t-[2rem] shadow-[0px_-8px_24px_rgba(88,65,66,0.04)]">
-<div class="flex flex-col items-center justify-center bg-[#c2828f] text-white rounded-full px-6 py-2 transition-transform active:scale-90 tap-highlight-transparent cursor-pointer">
-<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: &quot;FILL&quot; 1;">auto_awesome</span>
-<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase" style="">Studio</span>
-</div>
-<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 tap-highlight-transparent cursor-pointer">
-<span class="material-symbols-outlined" data-icon="photo_camera" style="">photo_camera</span>
-<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase" style="">Analyze</span>
-</div>
-<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 tap-highlight-transparent cursor-pointer">
-<span class="material-symbols-outlined" data-icon="apparel" style="">apparel</span>
-<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase" style="">Wardrobe</span>
-</div>
-<div class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90 tap-highlight-transparent cursor-pointer">
-<span class="material-symbols-outlined" data-icon="person" style="">person</span>
-<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase" style="">Profile</span>
-</div>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#faf9f8]/90 dark:bg-[#1a1c1c]/90 backdrop-blur-2xl rounded-t-[2rem] shadow-[0px_-8px_24px_rgba(88,65,66,0.04)]" id="bottom-nav">
+<button class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90" data-route="inicio" type="button">
+<span class="material-symbols-outlined mb-1">auto_awesome</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Estudio</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#c2828f] text-white rounded-full px-6 py-2" data-route="analisis" type="button">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Analisis</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90" data-route="outfits" type="button">
+<span class="material-symbols-outlined mb-1">apparel</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Armario</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#584142] dark:text-[#dadad9] opacity-70 hover:opacity-100 transition-opacity active:scale-90" data-route="perfil" type="button">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide uppercase">Perfil</span>
+</button>
 </nav>
 <script>
   (function () {
@@ -280,6 +280,16 @@
       const file = event.target.files && event.target.files[0];
       saveSelectedImage(file, "gallery");
     });
+
+    const nav = document.getElementById("bottom-nav");
+    if (nav) {
+      nav.querySelectorAll("[data-route]").forEach((item) => {
+        item.addEventListener("click", () => {
+          const route = item.getAttribute("data-route");
+          if (route) window.top.location.hash = route;
+        });
+      });
+    }
   })();
 </script>
 </body></html>

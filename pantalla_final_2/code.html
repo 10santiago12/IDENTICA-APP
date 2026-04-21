@@ -3,6 +3,7 @@
 <html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IDÉNTICA - Resumen Final</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -120,12 +121,12 @@
 <!-- Main Aesthetic Card -->
 <div class="md:col-span-7 relative group">
 <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-low">
-<img alt="Curation al estilo de Atelier Digital" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Retrato editorial de moda de una mujer elegante con una chaqueta coral cálida sobre un fondo arquitectónico beige minimalista con sombras naturales suaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGNk_e481KzsJvR2dG-22AMiP8wmDQOAyUEVSj0ZOqOf_tQpRKjHmwfJcu3RQoXZ8rQyns7bdF8JGALxFnNCsmXJp0SScb3iBcYs_XzumA4KrzKfGpPnW54Sopl0einCQyYHnk1plmMyQTE_hGnXh7leQ3VoEjUfr3WUNidxeO7hKpfdsad4MoXPzh5ZTHXUqGT68diX9-Af0bMt78L-G3shJpjxyKMVYQajPwbFrz9FqJ3SLf-OeXuZvScyg2Mu_SPiIwu6prURE"/>
+<img alt="Resumen visual del perfil" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Retrato editorial de moda de una mujer elegante con una chaqueta coral cálida sobre un fondo arquitectónico beige minimalista con sombras naturales suaves" id="final-main-photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGNk_e481KzsJvR2dG-22AMiP8wmDQOAyUEVSj0ZOqOf_tQpRKjHmwfJcu3RQoXZ8rQyns7bdF8JGALxFnNCsmXJp0SScb3iBcYs_XzumA4KrzKfGpPnW54Sopl0einCQyYHnk1plmMyQTE_hGnXh7leQ3VoEjUfr3WUNidxeO7hKpfdsad4MoXPzh5ZTHXUqGT68diX9-Af0bMt78L-G3shJpjxyKMVYQajPwbFrz9FqJ3SLf-OeXuZvScyg2Mu_SPiIwu6prURE"/>
 </div>
 <!-- Overlapping Label -->
 <div class="absolute -bottom-4 -right-4 glass-panel bg-white/70 p-6 rounded-xl shadow-[0px_12px_32px_rgba(88,65,66,0.06)] max-w-[240px]">
 <p class="font-label text-xs font-bold text-tertiary mb-2 uppercase tracking-widest">Esencia Detectada</p>
-<p class="font-headline text-xl font-bold text-on-surface leading-tight">Minimalismo Cálido &amp; Estructura</p>
+<p class="font-headline text-xl font-bold text-on-surface leading-tight" id="final-essence">Minimalismo Cálido &amp; Estructura</p>
 </div>
 </div>
 <!-- Secondary Insight Cards -->
@@ -133,13 +134,13 @@
 <!-- Color Palette Card -->
 <div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(88,65,66,0.04)]">
 <h3 class="font-headline font-bold text-on-surface-variant mb-4">Tu paleta estacional</h3>
-<div class="flex gap-2">
+<div class="flex gap-2" id="final-palette">
 <div class="h-16 flex-1 rounded-lg bg-primary-container" title="Coral Vibrante"></div>
 <div class="h-16 flex-1 rounded-lg bg-tertiary-container" title="Malva Suave"></div>
 <div class="h-16 flex-1 rounded-lg bg-secondary-container" title="Oro Digital"></div>
 <div class="h-16 flex-1 rounded-lg bg-[#584142]" title="Tierra Profunda"></div>
 </div>
-<p class="mt-4 text-sm text-on-surface-variant leading-relaxed">
+<p class="mt-4 text-sm text-on-surface-variant leading-relaxed" id="final-palette-description">
                             Colores que realzan tu subtono cálido y aportan luminosidad natural a tu rostro.
                         </p>
 </div>
@@ -152,7 +153,7 @@
 <span class="material-symbols-outlined text-tertiary text-sm" data-icon="bolt">bolt</span>
 <span class="font-label text-[10px] font-bold uppercase tracking-widest text-tertiary">Dato de Estilo AI</span>
 </div>
-<p class="font-body text-on-tertiary-container italic leading-relaxed">
+<p class="font-body text-on-tertiary-container italic leading-relaxed" id="final-ai-note">
                             "Prioriza tejidos con caída natural como el lino y la seda. La estructura de tus hombros sugiere cortes asimétricos para balancear la silueta."
                         </p>
 </div>
@@ -162,7 +163,7 @@
 <span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
 <div>
 <p class="text-[10px] uppercase font-bold tracking-wider text-on-surface-variant opacity-60">Confianza de IA</p>
-<p class="font-headline font-extrabold text-lg">98.4%</p>
+<p class="font-headline font-extrabold text-lg" id="final-ai-confidence">98.4%</p>
 </div>
 </div>
 <span class="material-symbols-outlined text-outline" data-icon="info">info</span>
@@ -171,7 +172,7 @@
 </div>
 <!-- Action Buttons -->
 <section class="max-w-md mx-auto space-y-4">
-<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold py-5 rounded-full shadow-[0px_8px_24px_rgba(164,60,18,0.2)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold py-5 rounded-full shadow-[0px_8px_24px_rgba(164,60,18,0.2)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2" id="view-recommendations-btn" type="button">
                     Ver recomendaciones completas
                     <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
 </button>
@@ -180,7 +181,7 @@
                     Guardar resultados
                 </button>
 <div class="pt-4 text-center">
-<button class="text-on-surface-variant font-label text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors flex items-center justify-center gap-2 mx-auto">
+<button class="text-on-surface-variant font-label text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors flex items-center justify-center gap-2 mx-auto" id="restart-flow-btn" type="button">
 <span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
                         Volver a analizar
                     </button>
@@ -197,4 +198,90 @@
 <footer class="mt-12 py-8 bg-surface-container-low text-center">
 <p class="font-label text-[10px] uppercase tracking-[0.3em] text-on-surface-variant/40">Idéntica AI Styling Atelier • 2024</p>
 </footer>
+<script>
+    (function () {
+        function getSessionStore() {
+            if (!window.top.__identicaSessionStore) {
+                window.top.__identicaSessionStore = {};
+            }
+            return window.top.__identicaSessionStore;
+        }
+
+        function setPalette(colors) {
+            const holder = document.getElementById("final-palette");
+            if (!holder || !Array.isArray(colors) || colors.length === 0) return;
+
+            holder.innerHTML = colors
+                .slice(0, 4)
+                .map((color) => `<div class="h-16 flex-1 rounded-lg shadow-sm" style="background:${color};"></div>`)
+                .join("");
+        }
+
+        function getConfidence(store) {
+            if (store.finalConfidence) return store.finalConfidence;
+            const value = (95 + Math.random() * 5).toFixed(1);
+            store.finalConfidence = `${value}%`;
+            return store.finalConfidence;
+        }
+
+        function applyData() {
+            const store = getSessionStore();
+            const data = store.resultsProfile || {};
+            const upload = store.upload || {};
+
+            const finalPhoto = document.getElementById("final-main-photo");
+            const finalEssence = document.getElementById("final-essence");
+            const finalPaletteDescription = document.getElementById("final-palette-description");
+            const finalAiNote = document.getElementById("final-ai-note");
+            const finalConfidence = document.getElementById("final-ai-confidence");
+
+            if (finalPhoto && upload.previewDataUrl) {
+                finalPhoto.src = upload.previewDataUrl;
+            }
+
+            if (finalEssence && data.morphology && data.season) {
+                finalEssence.textContent = `${data.morphology.label} • ${data.season.title}`;
+            }
+
+            if (finalPaletteDescription && data.colorProfile && data.season) {
+                finalPaletteDescription.textContent = `Paleta ${data.season.title.toLowerCase()} para subtono ${data.colorProfile.undertone.label.toLowerCase()}, pensada para potenciar tus rasgos.`;
+            }
+
+            if (finalAiNote && data.facial && data.facial.description) {
+                finalAiNote.textContent = `"${data.facial.description}"`;
+            }
+
+            if (data.season && Array.isArray(data.season.palette)) {
+                setPalette(data.season.palette);
+            }
+
+            if (finalConfidence) {
+                finalConfidence.textContent = getConfidence(store);
+            }
+        }
+
+        function bindActions() {
+            const viewRecommendationsBtn = document.getElementById("view-recommendations-btn");
+            const restartFlowBtn = document.getElementById("restart-flow-btn");
+
+            if (viewRecommendationsBtn) {
+                viewRecommendationsBtn.addEventListener("click", () => {
+                    window.top.location.hash = "outfits";
+                });
+            }
+
+            if (restartFlowBtn) {
+                restartFlowBtn.addEventListener("click", () => {
+                    window.top.__identicaSessionStore = {};
+                    localStorage.removeItem("identica-current-route");
+                    window.top.location.hash = "inicio";
+                    window.top.location.reload();
+                });
+            }
+        }
+
+        applyData();
+        bindActions();
+    })();
+</script>
 </body></html>

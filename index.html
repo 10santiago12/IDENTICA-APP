@@ -90,12 +90,9 @@
     }
 
     function readInitialRouteId() {
-      const hash = globalThis.location.hash.replace(/^#/, "").trim();
-      if (hash && getRouteIndexById(hash) >= 0) return hash;
-
-      const fromStorage = localStorage.getItem(STORAGE_KEY);
-      if (fromStorage && getRouteIndexById(fromStorage) >= 0) return fromStorage;
-
+      // Requerimiento demo: cada recarga reinicia el programa en toma de datos.
+      localStorage.removeItem(STORAGE_KEY);
+      globalThis.__identicaSessionStore = {};
       return "inicio";
     }
 
@@ -129,6 +126,7 @@
       if (value.includes("comenzar")) return "perfil";
       if (value.includes("continuar")) return "foto";
       if (value.includes("ver resultados")) return "resultados";
+      if (value.includes("ver detalles")) return "final";
       if (value.includes("comprar segun mi perfil") || value.includes("recomendaciones completas") || value.includes("comprar")) return "outfits";
       if (value.includes("guardar resultados")) return "final";
       if (value.includes("volver a analizar")) return "foto";
